@@ -1,0 +1,419 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_block %}
+<style>
+    .theme-hero-area-mask{
+
+    opacity: 0.223
+
+    }
+
+  .col-md-7 {
+    width: 58.33333333%;
+    padding-bottom: 20px;
+
+  }
+  .col-md-6 {
+    width: 50%;
+    padding-bottom: 20px;
+  }
+  .col-md-5 {
+    width: 41.66666667%;
+    padding-bottom: 20px;
+  }
+  .col-md-4 {
+    width: 33.33333333%;
+    padding-bottom: 20px;
+  }
+
+    .white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 60px;
+  width: auto;
+  max-width: 700px;
+  margin: 20px auto;
+  transition: 1s all;
+}
+
+.mfp-bg {}
+
+.mfp-fade.mfp-bg {
+  opacity: 0;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+}
+
+
+/* overlay animate in */
+
+.mfp-fade.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+
+
+/* overlay animate out */
+
+.mfp-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+  transition: all 0.4s ease-out;
+}
+
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}
+
+.theme-hero-area-bg-wrap{
+
+    filter: brightness(80%)
+    }
+h1{
+    font-size: 60px
+    }
+p
+    {
+    margin-left: 20px
+    }
+.btn-white{
+    margin-left: 2px
+    }
+
+ ._h-100vh{
+
+    height: 80vh !important
+
+    }
+
+    .wrapper-dropdown-5 {
+    /* Size & position */
+    position: relative;
+    width: 254px;
+    margin: 40px auto;
+    padding: 12px 15px;
+
+    /* Styles */
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-dropdown-5:after { /* Little arrow */
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #4cbeff transparent;
+}
+
+.wrapper-dropdown-5 .dropdown {
+    /* Size & position */
+    position: relative;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    /* Styles */
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-top: none;
+    border-bottom: none;
+    list-style: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+
+    /* Hiding */
+    max-height: 0;
+    overflow: hidden;
+}
+
+.wrapper-dropdown-5 .dropdown li {
+    padding: 0 10px ;
+}
+
+.wrapper-dropdown-5 .dropdown li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 0;
+    transition: all 0.3s ease-out;
+    border-bottom: 1px solid #e6e8ea;
+}
+
+.wrapper-dropdown-5 .dropdown li:last-of-type a {
+    border: none;
+}
+
+.wrapper-dropdown-5 .dropdown li i {
+    margin-right: 5px;
+    color: inherit;
+    vertical-align: middle;
+}
+
+/* Hover state */
+
+.wrapper-dropdown-5 .dropdown li:hover a {
+    color: #57a9d9;
+}
+
+/* Active state */
+
+.wrapper-dropdown-5.active {
+    border-radius: 5px 5px 0 0;
+    background: #4cbeff;
+    box-shadow: none;
+    border-bottom: none;
+    color: white;
+}
+
+.wrapper-dropdown-5.active:after {
+    border-color: #82d1ff transparent;
+}
+
+.wrapper-dropdown-5.active .dropdown {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    max-height: 400px;
+}
+</style>
+{% endblock %}
+{% block content %}
+    <div class="theme-hero-area _h-100vh _h-mob-60vh">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url({% static "media" %}/{{ trip.image }});"></div>
+        <div class="theme-hero-area-mask"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body">
+        <div class="container">
+          <div class="theme-item-page-header _pt-300 _pb-50 _pt-mob-100 theme-item-page-header-white">
+            <div class="theme-item-page-header-body">
+              <h1 class="theme-item-page-header-title _ff-d _fw-200 ">{{ trip.title }}</h1>
+              <div class="theme-item-page-header-price theme-item-page-header-price-xl">
+
+              </div>
+
+                <div id="test-popup" class="white-popup mfp-hide">
+                      <h2>{{ trip.title }}'s Itinerary</h2>
+
+                      <p> {{ trip.itinerary|linebreaks }}</p>
+                    </div>
+                    <a href="#test-popup" class="btn open-popup-link _tt-uc _ls-0 _mt-30 _p-15 btn-white">Show Itinerary </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="theme-page-section _pt-0 _pb-60 front theme-page-section-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="_ph-30 _bg-w _bsh-xl _mt--50">
+              <div class="row row-col-static row-eq-height row-col-border" id="sticky-parent" data-gutter="60">
+                <div class="col-md-8 ">
+                  <div class="theme-item-page-details _pv-30 theme-item-page-details-first-nm">
+                    <div class="theme-item-page-details-section">
+                      <div class="row magnific-gallery row-col-gap" data-gutter="10">
+                      {% for image in gallerys %}
+                        <div class="{% cycle "col-md-4" "col-md-4" "col-md-4" "col-md-7" "col-md-5" "col-md-6" "col-md-6"  %} ">
+                          <div class="banner _h-20vh _h-mob-15vh banner-">
+                            <div class="banner-bg" style="background-image:url({% static "media" %}/{{ image }});"></div>
+                            <a class="banner-link" href="{% static "media/" %}/{{ image }}"></a>
+                          </div>
+                        </div>
+                      {% endfor %}
+                      </div>
+                    </div>
+                    <div class="theme-item-page-details-section">
+                      <h5 class="theme-item-page-details-section-title">Overview</h5>
+                      <div class="theme-item-page-desc">
+                       <p> {{ trip.overview|linebreaks }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="sticky-col _pv-30 _mob-h">
+                    <div class="theme-search-area theme-search-area-vert">
+
+                    <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
+                      <h1 class="theme-search-area-title">{{ trip.price }}            <span>PKR / person</span> </h1>
+                    </div>
+                    <div class="theme-search-area-form method="POST" action="{% url 'booknow' %}">
+                      <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+                        
+                      </div>
+                      <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-people"></i>
+                          <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                          <div class="quantity-selector-box" id="mobile-ExpSearchGuests">
+                            <div class="quantity-selector-inner">
+                              <p class="quantity-selector-title">Guests</p>
+                              <ul class="quantity-selector-controls">
+                                <li class="quantity-selector-decrement">
+                                  <a href="#">&#45;</a>
+                                    <div id="root">
+                                         {{ greeting }}
+                                    <br>
+                                    <input v-model="greeting">
+                                    </div>
+                                </li>
+                                <li class="quantity-selector-current">1</li>
+                                <li class="quantity-selector-increment">
+                                  <a href="#">&#43;</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="theme-item-page-summary-price _mb-20">
+                        <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapseMobile" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapseMobile">Show summary</a>
+                        <div class="collapse" id="summaryPriceCollapseMobile">
+                          <ul class="theme-item-page-summary-price-list">
+                            <li class="theme-item-page-summary-price-item">
+                              <h5 class="theme-item-page-summary-price-item-title">2 Guests</h5>
+                              <p class="theme-item-page-summary-price-item-subtitle"></p>
+                              <p class="theme-item-page-summary-price-item-price">$184.00</p>
+                            </li>
+                            <li class="theme-item-page-summary-price-item">
+                              <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
+                              <p class="theme-item-page-summary-price-item-subtitle"></p>
+                              <p class="theme-item-page-summary-price-item-price">$7.00</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <p class="theme-item-page-summary-price-total">Total
+                          <span>$191.00</span>
+                        </p>
+                      </div>
+                      <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="theme-page-section theme-page-section-xxl theme-page-section-white theme-page-section-header-gray">
+      <div class="container">
+        <div class="theme-page-section-header">
+          <h5 class="theme-page-section-title">Trip Highlights</h5>
+          <p class="theme-page-section-subtitle">Read about most epic places in this Trip</p>
+        </div>
+    <div class="theme-inline-slider row" data-gutter="10">
+        <div class="owl-carousel" data-items="3" data-loop="true" data-nav="true" data-autoplay="3000" data-gutter="none">
+            {% for place in places %}
+                <div class="col-md-12 ">
+                    <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+                      <div class="banner-bg" style="background-image:url({% static "media/covers" %}/{{ place.coverImage }});"></div>
+                      <div class="banner-mask"></div>
+                      <a class="banner-link" href="{% url 'place-details' place.id %}"></a>
+                      <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                        <h5 class="banner-title">{{ place.title }}</h5>
+                        <p class="banner-subtitle _fw-n"></p>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+<div class="theme-page-section theme-page-section-xxl theme-page-section-white theme-page-section-header-gray">
+      <div class="container">
+        <div class="theme-page-section-header">
+          <h5 class="theme-page-section-title">More Trips</h5>
+              <p class="theme-page-section-subtitle">Find out about most exclusive travel plans</p>
+        </div>
+    <div class="theme-inline-slider row" data-gutter="10">
+        <div class="owl-carousel" data-items="3" data-loop="true" data-nav="true" data-autoplay="3000" data-gutter="none">
+            {% for trip in trips %}
+                <div class="col-md-12 ">
+                    <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+                      <div class="banner-bg" style="background-image:url({% static "media" %}/{{ trip.image }});"></div>
+                      <div class="banner-mask"></div>
+                      <a class="banner-link" href="{% url 'trip-details' trip.slug %}"></a>
+                      <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                        <h5 class="banner-title">{{ trip.title }}</h5>
+                        <p class="banner-subtitle _fw-n"></p>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+{% block script %}
+<script>
+    $('.open-popup-link').magnificPopup({
+  type: 'inline',
+  midClick: true,
+  mainClass: 'mfp-fade'
+});
+
+
+  		function DropDown(el) {
+				this.dd = el;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd.on('click', function(event){
+						$(this).toggleClass('active');
+						event.stopPropagation();
+					});
+				}
+			}
+
+			$(function() {
+
+				var dd = new DropDown( $('#dd') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-5').removeClass('active');
+				});
+
+			});
+</script>
+
+
+{% endblock %}

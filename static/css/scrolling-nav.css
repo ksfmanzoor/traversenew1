@@ -1,0 +1,371 @@
+/*!
+ * Start Bootstrap - Scrolling Nav HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+@font-face {
+    font-family: "CenturyGothic";
+    src: url("../fonts/century_gothic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "GothamBold";
+    src: url("../fonts/gotham_bold.ttf") format("truetype");
+}
+
+body {
+    font-family: "CenturyGothic";
+}
+
+h1, h2 {
+    font-family: "GothamBold";
+    color: #2c3d51;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 767px) {
+    .navbar {
+        display: flex;
+        -webkit-transition: margin .5s ease-in-out, background .5s ease-in-out, padding .5s ease-in-out;
+        -moz-transition: margin .5s ease-in-out, background .5s ease-in-out, padding .5s ease-in-out;
+        transition: margin .5s ease-in-out, background .5s ease-in-out, padding .5s ease-in-out;
+    }
+}
+
+/* Demo Sections - You can use these as guides or delete them - the scroller will work with any sort of height, fixed, undefined, or percentage based.
+The padding is very important to make sure the scrollspy picks up the right area when scrolled to. Adjust the margin and padding of sections and children 
+of those sections to manage the look and feel of the site. */
+
+section {
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+a.navbar-brand {
+    padding: 0px;
+}
+
+a.navbar-brand div {
+    width: 225px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(/static/images/logo_black_text.png);
+    transition: height .5s ease-in-out;
+}
+
+nav.navbar-default a.navbar-brand div {
+    height: 80px;
+}
+
+nav.top-nav-collapse a.navbar-brand div {
+    height: 50px;
+}
+
+nav.navbar-default {
+    padding: 10px;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 1px 0 #ddd;
+    border: none;
+}
+
+nav.navbar-default .pills-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: padding .5s ease-in-out;
+}
+
+nav.top-nav-collapse .pills-container {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+nav.top-nav-collapse {
+    margin-top: 0px;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+}
+
+.navbar-default .navbar-nav  h4 {
+    font-weight: 700; !important;
+}
+
+.place-title, .place-subtitle {
+    text-shadow: 0px 1px black;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #2c3d51;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #1abc9c;
+    outline: none;
+}
+
+.navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+}
+
+nav.top-nav-collapse {
+    margin-top: 0px;
+    padding: 7px;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #2c3d51;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #1abc9c;
+    outline: none;
+}
+
+.navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    color: #1abc9c;
+    background-color: transparent;
+    outline: none;
+}
+
+.navbar-default .navbar-nav > .active > a + span, .navbar-default .navbar-nav > .active > a + span {
+    width: 100%;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    color: #1abc9c;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: #1abc9c;
+}
+
+.navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.center-container {
+    text-align: center;
+!important
+}
+
+.white {
+    color: #fff;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+a {
+    color: #2c3d51;
+}
+
+a:hover, a:focus {
+    color: #2c3d51;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #2c3e51;
+    border-color: #2c3e51;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: #27374a;
+    border-color: #27374a;
+}
+
+.loading {
+    text-align: center;
+}
+
+input[type=Search], input[type=text] {
+    outline-color: #2c3d51;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+input[type=search]:active, input[type=search]:focus {
+    border-color: #2c3d51;
+    box-shadow: none;
+}
+
+.btn-flat {
+    border-radius: 0;
+}
+
+.bg-blue {
+    background-color: #2c3e50;
+    color: #fff;
+}
+
+/*section#contact > div {*/
+    /*padding: 20px;*/
+/*}*/
+
+/*section#contact > div img {*/
+    /*margin-bottom: 60px;*/
+/*}*/
+
+.bg-grey {
+    background-color: #ecf0f1;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+section#contact {
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+.img-div {
+    padding: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 100px;
+    /*width: 100%;*/
+    /*padding-bottom: 100%;*/
+}
+
+#connect-fb {
+    background-image: url(/static/images/social/Facebook.png);
+}
+
+#connect-fb:hover {
+    background-image: url(/static/images/social/Facebook_Hover.png);
+}
+
+#connect-fb:active {
+    background-image: url(/static/images/social/Facebook_Pressed.png);
+}
+
+#connect-tw {
+    background-image: url(/static/images/social/Twitter.png);
+}
+
+#connect-tw:hover {
+    background-image: url(/static/images/social/Twitter_hover.png);
+}
+
+#connect-tw:active {
+    background-image: url(/static/images/social/Twitter_pressed.png);
+}
+
+#connect-vm {
+    background-image: url(/static/images/social/Vimeo.png);
+}
+
+#connect-vm:hover {
+    background-image: url(/static/images/social/Vimeo_Hover.png);
+}
+
+#connect-vm:active {
+    background-image: url(/static/images/social/Vimeo_Pressed.png);
+}
+
+#connect-li {
+    background-image: url(/static/images/social/Linkedin.png);
+}
+
+#connect-li:hover {
+    background-image: url(/static/images/social/Linkedin_Hover.png);
+}
+
+#connect-li:active {
+    background-image: url(/static/images/social/Linkedin_pressed.png);
+}
+
+#connect-ig {
+    background-image: url(/static/images/social/Instagram.png);
+}
+
+#connect-ig:hover {
+    background-image: url(/static/images/social/Instagram_Hover.png);
+}
+
+#connect-ig:active {
+    background-image: url(/static/images/social/Instagram_pressed.png);
+}
+
+#connect-yt {
+    background-image: url(/static/images/social/Youtube.png);
+}
+
+#connect-yt:hover {
+    background-image: url(/static/images/social/Youtube_hover.png);
+}
+
+#connect-yt:active {
+    background-image: url(/static/images/social/Youtube_pressed.png);
+}
+
+#connect-gp {
+    background-image: url(/static/images/social/GooglePlus.png);
+}
+
+#connect-gp:hover {
+    background-image: url(/static/images/social/GooglePlus_Hover.png);
+}
+
+#connect-gp:active {
+    background-image: url(/static/images/social/GooglePlus_pressed.png);
+}
+
+#connect-pt {
+    background-image: url(/static/images/social/Pinterest.png);
+}
+
+#connect-pt:hover {
+    background-image: url(/static/images/social/Pinterest_hover.png);
+}
+
+#connect-pt:active {
+    background-image: url(/static/images/social/Pinterest_pressed.png);
+}
+
+body:after {
+    display: none;
+    content: url(/static/images/social/Facebook.png)
+    url(/static/images/social/Facebook_Hover.png)
+    url(/static/images/social/Facebook_Pressed.png)
+    url(/static/images/social/Twitter.png)
+    url(/static/images/social/Twitter_hover.png)
+    url(/static/images/social/Twitter_pressed.png)
+    url(/static/images/social/Vimeo.png)
+    url(/static/images/social/Vimeo_Hover.png)
+    url(/static/images/social/Vimeo_Pressed.png)
+    url(/static/images/social/Linkedin.png)
+    url(/static/images/social/Linkedin_Hover.png)
+    url(/static/images/social/Linkedin_pressed.png)
+    url(/static/images/social/Instagram.png)
+    url(/static/images/social/Instagram_Hover.png)
+    url(/static/images/social/Instagram_pressed.png)
+    url(/static/images/social/Youtube.png)
+    url(/static/images/social/Youtube_hover.png)
+    url(/static/images/social/Youtube_pressed.png)
+    url(/static/images/social/GooglePlus.png)
+    url(/static/images/social/GooglePlus_Hover.png)
+    url(/static/images/social/GooglePlus_pressed.png)
+    url(/static/images/social/Pinterest.png)
+    url(/static/images/social/Pinterest_hover.png)
+    url(/static/images/social/Pinterest_pressed.png);
+}

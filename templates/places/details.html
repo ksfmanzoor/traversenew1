@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %} {{ place.title }} {% endblock %}
+
+{% block css_block %}
+    <link href="{% static "css/owfont-regular.min.css" %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static "css/blueimp-gallery.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-image-gallery.min.css" %}">
+    <link href="{% static "css/places_details.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block homelink_block %}
+    <a class="navbar-brand page-scroll" href="/#page-top">
+        <div></div>
+    </a>
+{% endblock %}
+
+{% block navbar_listitems %}
+    <li>
+        <a class="page-scroll" href="/about"><h4>About</h4></a>
+        <span></span>
+    </li>
+    <li>
+        <a class="page-scroll" href="/places/"><h4>Places</h4></a>
+        <span></span>
+    </li>
+    <li>
+        <a class="page-scroll" href="#contact"><h4>Contact</h4></a>
+        <span></span>
+    </li>
+{% endblock %}
+
+{% block sections %}
+    <!-- Intro Section -->
+    {% with "media/covers/"|add:place.coverImage as coverUrl %}
+        <section id="cover" class="intro-section" style="background-image: url({% static coverUrl %});">
+    {% endwith %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="white place-title" id="place_title">{{ place.title }}</h1>
+
+            <h3 class="white place-subtitle" id="place_subtitle">{{ place.subtitle }}</h3>
+        </div>
+    </div>
+</div>
+</section>
+
+    <div class="bg-white container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h5 class="pull-left"><a href="/places/browse/{{ place.region.name }}/any">{{ place.region.title }}</a>
+                    >
+                    <a href="/places/browse/any/{{ place.category.name }}">{{ place.category.title }}</a>
+                    > <span style="color: #1abc9c">{{ place.title }}</span></h5>
+            </div>
+            <div class="col-sm-6">
+                <h5 class="pull-right">
+                    {% for tag in place.tags.all %}
+                        {{ tag }},
+                    {% endfor %}
+                </h5>
+            </div>
+        </div>
+        <div id="navigators" class="row">
+            <a class="page-scroll" href="#map-section">
+                <div id="map-navigator" class="col-sm-2 col-sm-offset-2">
+                    <div class="center-block"></div>
+                    <h3 class="text-center">Map</h3>
+                </div>
+            </a>
+
+            <a class="page-scroll" href="#gettingthere">
+                <div id="gettingthere-navigator" class="col-sm-2">
+                    <div class="center-block"></div>
+                    <h3 class="text-center">Getting There</h3>
+                </div>
+            </a>
+
+            <a class="page-scroll" href="#gallery">
+                <div id="gallery-navigator" class="col-sm-2">
+                    <div class="center-block"></div>
+                    <h3 class="text-center">Gallery</h3>
+                </div>
+            </a>
+
+            <a class="page-scroll" href="#weather">
+                <div id="weather-navigator" class="col-sm-2">
+                    <div class="center-block"></div>
+                    <h3 class="text-center">Weather</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <section class="bg-white" id="description">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h4 class="text-center">{{ place.description }}</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-grey" id="map-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Map</h2>
+
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white" id="gettingthere">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Getting There</h2>
+                    <h4 class="text-center">{{ place.gettingThere }}</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-grey" id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Gallery</h2>
+
+                    <div id="links">
+                        <div class="grid js-masonry"
+                             data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": ".grid-sizer", "percentPosition": "true" }'>
+                            <div class="grid-sizer"></div>
+                            {% for image in gallery %}
+                                <a href="{% static "media/" %}/{{ image }}" data-gallery>
+
+                                    {% thumbnail image "600x600" crop="center" as im %}
+                                        <div class="grid-item" style="background-image: url({{ im.url }});">
+                                    {% endthumbnail %}
+                                    </div>
+
+                                </a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
+        <!-- The container for the modal slides -->
+        <div class="slides"></div>
+        <!-- Controls for the borderless lightbox -->
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+        <!-- The modal dialog, which will be used to wrap the lightbox content -->
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body next"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left prev">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            Previous
+                        </button>
+                        <button type="button" class="btn btn-primary next">
+                            Next
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-white" id="weather">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Weather at {{ place.title }}</h2>
+
+                    <div id="weather-container" class="col-lg-8 col-lg-offset-2">
+                        {% include 'places/weather.html' %}
+                    </div>
+
+                    <div class="loading col-lg-6 col-lg-offset-3">
+                        <img class="center-block" src="{% static "images/loading.gif" %}"/>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+        <div class="theme-page-section-header _ta-l _mb-20">
+          <h5 class="theme-page-section-title theme-page-section-title-sm">Best Expericences in New York</h5>
+          <a class="theme-page-section-header-link _tt-n theme-page-section-header-link-rb" href="#">+ Find More</a>
+        </div>
+
+        <div class="theme-inline-slider row" data-gutter="10">
+          <div class="owl-carousel" data-items="5" data-loop="true" data-nav="true">
+            {% for experience in experiences %}
+            <div class="theme-inline-slider-item">
+              <div class="banner _br-4 banner-sqr banner-animate banner-animate-mask-in">
+                <div class="banner-bg" style="background-image:url({% static 'media' %}/{{ experience.image }});"></div>
+                <div class="banner-mask"></div>
+                <a class="banner-link" href="#"></a>
+                <div class="banner-caption _ph-15 _pb-15 _pt-60 banner-caption-bottom banner-caption-grad">
+                  <h5 class="banner-title _fw-b _fs-sm">{{ experience.title }}</h5>
+                  <p class="banner-subtitle _fw-n _fs-sm _mt-5">{{ experience.price }}</p>
+                </div>
+              </div>
+          </div>
+          {% endfor %}
+
+          </div>
+        </div>
+{% endblock %}
+{% block script_block %}
+
+    <script async defer
+            src="//maps.googleapis.com/maps/api/js?key=AIzaSyAx7f_Xx-m6SBb-txWjx5zcuO9Q3F1-Ylg&callback=initMap">
+    </script>
+
+    <script>
+        //center: {lat: {{ place.location.latitude }}, lng: {{ place.location.longitude }}},
+        var map;
+
+        function initMap() {
+            var position = {lat: {{ place.location.latitude }}, lng: {{ place.location.longitude }}};
+            // Create a map object and specify the DOM element for display.
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: position,
+                scrollwheel: false,
+                zoom: 9
+            });
+
+
+            new google.maps.Marker({
+                position: position,
+                map: map,
+                title: '{{ place.title }}'
+            });
+        }
+
+        $(function () {
+            $("#weather-container").hide();
+            $(".loading").show();
+            $.ajax({
+                url: '//api.openweathermap.org/data/2.5/weather',
+                data: {
+                    lat: {{place.location.latitude}},
+                    {#                    lat: '31.5497',#}
+                    {#                    lon: '74.3436',#}
+                    lon: {{ place.location.longitude }},
+                    APPID: '1ec5c7e0d2d156f167f254753c4bd54d',
+                    units: 'metric'
+                },
+                success: function (data) {
+                    function toTitleCase(str) {
+                        return str.replace(/\w\S*/g, function (txt) {
+                            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                        });
+                    }
+
+                    var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+                    $("#weather-temperature").text(Math.round(data.main.temp) + '\u00B0 C');
+                    $("#weather-humidity").text('Humidity: ' + data.main.humidity + '%');
+                    $("#weather-wind").text('Wind: ' + Math.round(data.wind.speed) + " km/h");
+                    $("#weather-description").text(toTitleCase(data.weather[0].description));
+                    $("#weather-icon").removeClass().addClass('owf owf-' + data.weather[0].id + ' owf-5x');
+
+                    var date = new Date();
+                    $("#weather-day").text(days[date.getDay()]);
+                    $("#weather-date").text(date.getDate() + ", " + months[date.getMonth()]);
+
+
+                    $("#weather-container").show();
+                    $(".loading").hide();
+                },
+                error: function (error) {
+                }
+            });
+        });
+    </script>
+    <script src="{% static "js/jquery.blueimp-gallery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap-image-gallery.min.js" %}"></script>
+    <script src="{% static "js/masonry.pkgd.min.js" %}"></script>
+{% endblock %}

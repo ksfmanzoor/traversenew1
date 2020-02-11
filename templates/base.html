@@ -1,0 +1,167 @@
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Travel Mate - Blog</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static "css/font-awesome.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/lineicons.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/weather-icons.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}"/>
+    <script href="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script href="https://unpkg.com/vuex"></script>
+
+    <style>
+        .theme-page-section-xl {
+            padding: 0px;
+    }
+    </style>
+    {% block css_block %} {% endblock %}
+
+  </head>
+
+<body class="bg-gray">
+    <nav class="navbar navbar-default navbar-inverse navbar-theme navbar-theme-abs navbar-theme-transparent navbar-theme-border" id="main-nav">
+      <div class="container">
+        <div class="navbar-inner nav">
+          <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-target="#navbar-main" data-toggle="collapse" type="button" area-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=""http://127.0.0.1:8000/"">
+              <img src="{% static "img/logo.png" %}" alt="Image Alternative text" title="Image Title"/>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="{% url 'trip-home' %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trips</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="{% url 'experience-home' %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Experiences</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="{% url 'trip-home' %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cars</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="{% url 'trip-home' %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+
+              <li class="navbar-nav-item-user dropdown">
+                <a class="dropdown-toggle" href="{% url 'profile' %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i> {{user.username|upper}}
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{% url 'profile' %}">Profile</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'logout' %}">Your Bookings</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          {% else %}
+                 <li class="navbar-nav-item-user dropdown">
+                <a class="dropdown-toggle" href="{% url 'login' %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i> Login
+                </a>
+
+                  <li class="dropdown">
+                <a class="dropdown-toggle" href="{% url 'register' %}" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="True">Register</a>
+                  </li>
+
+          {% endif %}
+          </div>
+        </div>
+      </div>
+</nav>
+
+{% block content %}
+
+{% endblock content%}
+
+
+    <div class="theme-copyright">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="theme-footer-abs-nav">
+                <li>
+                  <a href="{% url 'experience-home' %}">Experiences</a>
+                </li>
+                <li>
+                  <a href="{% url 'index' %}">Places</a>
+                </li>
+                <li>
+                  <a href="car-index-1.html">Transport</a>
+                </li>
+
+                <li>
+                  <a href="about-us.html">About Us</a>
+                </li>
+                <li>
+                  <a href="contact.html">Contact</a>
+                </li>
+              </ul>
+              <p class="theme-footer-abs-copyright">Copyright &copy; 2015
+                <a href="#">Traverse Pakistan</a>. All rights reserved.
+              </p>
+            </div>
+            <div class="col-md-6">
+              <ul class="theme-social-list theme-footer-abs-social">
+                <li>
+                  <a class="fa fa-facebook" href="www.facebook.com/traversepakistan"></a>
+                </li>
+                <li>
+                  <a class="fa fa-twitter" href="www.twitter.com/traversepakistan"></a>
+                </li>
+                <li>
+                  <a class="fa fa-instagram" href=href="www.instagram.com/traversepakistan"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+    <script src={%static "js/jquery.js" %}></script>
+    <script src={%static "js/moment.js" %}></script>
+    <script src={%static "js/owl-carousel.js" %}></script>
+    <script src={%static "js/blur-area.js" %}></script>
+    <script src={%static "js/icheck.js" %}></script>
+    <script src={%static "js/gmap.js" %}></script>
+    <script src={%static "js/magnific-popup.js" %}></script>
+    <script src={%static "js/ion-range-slider.js" %}></script>
+    <script src={%static "js/sticky-kit.js" %}></script>
+    <script src={%static "js/smooth-scroll.js" %}></script>
+    <script src={%static "js/fotorama.js" %}></script>
+    <script src={%static "js/bs-datepicker.js" %}></script>
+    <script src={%static "js/typeahead.js" %}></script>
+    <script src={%static "js/quantity-selector.js" %}></script>
+    <script src={%static "js/countdown.js" %}></script>
+    <script src={%static "js/window-scroll-action.js" %}></script>
+    <script src={%static "js/fitvid.js" %}></script>
+    <script src={%static "js/youtube-bg.js" %}></script>
+    <script src={%static "js/custom.js" %}></script>
+    <script src={%static "js/select2.min.js" %}></script>
+
+    {% block script %} {% endblock %}
+
+
+  </body>
+</html>

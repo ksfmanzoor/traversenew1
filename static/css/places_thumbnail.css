@@ -1,0 +1,26 @@
+.square {
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.place-thumbnail {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* ---- grid-item ---- */
+.grid {
+    margin: -2%;
+}
+
+.grid-item {
+    width: 31%;
+    margin: 1%;
+}
+
+.grid-item {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

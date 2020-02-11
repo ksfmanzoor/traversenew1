@@ -1,0 +1,47 @@
+{% extends 'experiences/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="theme-hero-area theme-hero-area-full">
+
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url({% static "media" %}/{{ category.image }});"> </div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body">
+        <div class="container">
+          <div class="theme-page-header theme-page-header-lg theme-page-header-abs">
+            <h1 class="theme-page-header-title"> {{ category.title }} </h1>
+            <p class="theme-page-header-subtitle">Find out more</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="theme-page-section theme-page-section-xl theme-page-section-gray">
+      <div class="container">
+        <div class="row row-col-gap" data-gutter="20">
+
+          {% for experience in experiences %}
+
+            <div class="col-md-3 ">
+                  <div class="theme-blog-item _br-2 theme-blog-item-center">
+                      <a class="theme-blog-item-link" href= "{% url 'experience-detail' experience.id %}"></a>
+                      <div class="banner _h-45vh  banner-">
+                      <div class="banner-bg" style="background-image:url({% static "media" %}/{{ experience.image }});"></div>
+                      <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                      <p class="theme-blog-item-time">day ago</p>
+                      <h5> <a class="theme-blog-item-title">{{ experience.title }}</a></h5>
+                      <p class="theme-blog-item-desc">{{ experience.content }}</p>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+{% endblock content %}

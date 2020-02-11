@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+     <div class="theme-hero-area theme-hero-area-full">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url({% static "media" %}/{{ post.image }});"></div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 theme-page-header-abs">
+              <div class="theme-page-header theme-page-header-lg">
+                <h1 class="theme-page-header-title">{{ post.title }}</h1>
+                <p class="theme-page-header-subtitle">{{ post.date_posted }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="theme-page-section _pb-30 theme-page-section-gray theme-page-section-xl">
+        <div class="row">
+          <div class="col-md-12 theme-blog-item-center ">
+            <div class="theme-blog-post">
+              <p>{% autoescape off %}{{ post.content }}{% endautoescape %}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock content %}

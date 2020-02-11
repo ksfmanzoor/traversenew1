@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %} Traverse Pakistan {% endblock %}
+
+{% block css_block %}
+    <link href="{% static "css/places_thumbnail.css" %}" rel="stylesheet">
+    <link href="{% static "css/home.css" %}" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+
+{% block homelink_block %}
+    <a class="navbar-brand page-scroll" href="#page-top">
+        <div></div>
+    </a>
+{% endblock %}
+
+{% block navbar_listitems %}
+    <li>
+        <a class="page-scroll" href="/about"><h4>About</h4></a>
+        <span></span>
+    </li>
+    <li>
+        <a class="page-scroll" href="/places"><h4>Places</h4></a>
+        <span></span>
+    </li>
+    <li>
+        <a class="page-scroll" href="#contact"><h4>Contact</h4></a>
+        <span></span>
+    </li>
+{% endblock %}
+
+{% block sections %}
+    <!-- Packages Section -->
+    <section id="deals" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 center-container">
+                    <h1 class="white uppercase">
+                        <b>LETS TRAVERSE PAKISTAN</b>
+                    </h1>
+
+                    <div class="row" id="places-form">
+                        <div class="col-sm-5 buttons-fill">
+                            <div class="dropdown">
+                                <button id="regionDropDown" class="btn btn-flat btn-default dropdown-toggle"
+                                        type="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="true">Anywhere in Pakistan<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="regionDropDown" role="menu">
+                                    <li><a data-value="any" data-selected="true">Anywhere in Pakistan</a>
+                                    </li>
+                                    {% for region in regions %}
+                                        <li><a data-value="{{ region.name }}">{{ region.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-5 buttons-fill">
+                            <div class="dropdown">
+                                <button id="categoryDropDown" class="btn btn-flat btn-default dropdown-toggle"
+                                        type="button"
+                                        data-toggle="dropdown">All Kinds of Places<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a data-value="any" data-selected="true">All Kinds of Places</a>
+                                    </li>
+                                    {% for category in categories %}
+                                        <li><a data-value="{{ category.name }}">{{ category.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 buttons-fill">
+                            <button id="submitButton" class="btn btn-flat btn-primary" type="submit"
+                                    aria-expanded="true">Search
+                            </button>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h4 class="white">Pakistan's Largest Traversopedia</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Places Section -->
+    <section id="places" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Come see the splendid colors of Pakistan with us!</h2>
+
+                    <p class="text-center">We, Traversers, are here to make you realize the beauty of Pakistan. All you
+                        have to do is tell
+                        us the place you want to see and we will make sure that you go home with a bag full of colorful
+                        memories!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-grey intro-sectplaces/details/keranion">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Beautiful Pakistan</h2>
+                    <br/>
+
+                    <div class="grid js-masonry"
+                         data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": ".grid-sizer", "percentPosition": "true" }'>
+                        <div class="grid-sizer"></div>
+                        {% for place in featured_places %}
+                            <div class="grid-item">
+                                {% with "covers/"|add:place.coverImage as coverUrl %}
+                                    {% include "places/places_thumbnail.html" with cover=coverUrl title=place.title subtitle=place.subtitle name=place.name only %}
+                                {% endwith %}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <br/>
+
+                        <a href="/places"> <button class="pull-right btn btn-flat btn-default"> See all </button> </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block script_block %}
+    <script>
+        $(function () {
+            $("#submitButton").on('click', function () {
+                var region = $("#regionDropDown").attr('value');
+                var category = $("#categoryDropDown").attr('value');
+                if (!region)
+                    region = 'any';
+                if (!category)
+                    category = 'any';
+
+                window.location.href = 'places/browse/' + region + '/' + category;
+            });
+        });
+    </script>
+    <script src="{% static "js/masonry.pkgd.min.js" %}"></script>
+{% endblock %}

@@ -1,0 +1,182 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="theme-hero-area _h-mob-60vh">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url({% static "media" %}/{{ experience.image }});"></div>
+        <div class="theme-hero-area-mask"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body">
+        <div class="container">
+          <div class="theme-item-page-header _pt-300 _pb-50 _pt-mob-100 theme-item-page-header-white">
+            <div class="theme-item-page-header-body">
+              <div class="theme-item-page-header-rating">
+                <ul class="theme-item-page-header-rating-stars">
+                  <li>
+                    <i class="fa fa-star"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-star"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-star"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-star-half-o"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-star-o"></i>
+                  </li>
+                </ul>
+                <p class="theme-item-page-header-rating-title">30 reviews</p>
+              </div>
+              <h1 class="theme-item-page-header-title _ff-d _fw-200">{{ experience.title }}</h1>
+              <div class="theme-item-page-header-price theme-item-page-header-price-xl">
+                <p class="theme-item-page-header-price-body">
+                  <b>$90</b>
+                  <span>/ person</span>
+                </p>
+              </div>
+              <ul class="theme-breadcrumbs">
+                <li>
+                  <p class="theme-breadcrumbs-item-title">
+                    <a href="index-2.html">Home</a>
+                  </p>
+                </li>
+                <li>
+                  <p class="theme-breadcrumbs-item-title">
+                    <a href="#">United Kindom</a>
+                  </p>
+                  <p class="theme-breadcrumbs-item-subtitle">3,245 offers</p>
+                </li>
+                <li>
+                  <p class="theme-breadcrumbs-item-title">
+                    <a href="#">England</a>
+                  </p>
+                  <p class="theme-breadcrumbs-item-subtitle">615 offers</p>
+                </li>
+                <li>
+                  <p class="theme-breadcrumbs-item-title">
+                    <a href="#">London Experiences</a>
+                  </p>
+                  <p class="theme-breadcrumbs-item-subtitle">312 offers</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div class="theme-page-section _pt-0 _pb-60 front theme-page-section-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="_ph-30 _bg-w _bsh-xl _mt--50">
+              <div class="row row-col-static row-eq-height row-col-border" id="sticky-parent" data-gutter="60">
+                <div class="col-md-8 ">
+                  <div class="theme-item-page-details _pv-30 theme-item-page-details-first-nm">
+                    <div class="theme-item-page-details-section">
+                      <div class="row magnific-gallery row-col-gap" data-gutter="10">
+                      {% for image in gallerys %}
+                        <div class="{% cycle "col-md-4" "col-md-4" "col-md-4" "col-md-7" "col-md-5" "col-md-6" "col-md-6"  %} ">
+                          <div class="banner _h-20vh _h-mob-15vh banner-">
+                            <div class="banner-bg" style="background-image:url({% static "media" %}/{{ image }});"></div>
+                            <a class="banner-link" href="{% static "media/" %}/{{ image }}"></a>
+                          </div>
+                        </div>
+                      {% endfor %}
+                      </div>
+                    </div>
+                    <div class="theme-item-page-details-section">
+                      <h5 class="theme-item-page-details-section-title">Overview</h5>
+                      <div class="theme-item-page-desc">
+                       <p> {{ experience.overview|linebreaks }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="sticky-col _pv-30 _mob-h">
+                    <div class="theme-search-area theme-search-area-vert">
+
+                    <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
+                      <h1 class="theme-search-area-title">{{ trip.price }}            <span>PKR / person</span> </h1>
+                    </div>
+                    <div class="theme-search-area-form">
+                      <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+
+                      </div>
+                      <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-people"></i>
+                          <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                          <div class="quantity-selector-box" id="mobile-ExpSearchGuests">
+                            <div class="quantity-selector-inner">
+                              <p class="quantity-selector-title">Guests</p>
+                              <ul class="quantity-selector-controls">
+                                <li class="quantity-selector-decrement">
+                                  <a href="#">&#45;</a>
+                                    <div id="root">
+                                         {{ greeting }}
+                                    <br>
+                                    <input v-model="greeting">
+                                    </div>
+                                </li>
+                                <li class="quantity-selector-current">1</li>
+                                <li class="quantity-selector-increment">
+                                  <a href="#">&#43;</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="theme-item-page-summary-price _mb-20">
+                        <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapseMobile" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapseMobile">Show summary</a>
+                        <div class="collapse" id="summaryPriceCollapseMobile">
+                          <ul class="theme-item-page-summary-price-list">
+                            <li class="theme-item-page-summary-price-item">
+                              <h5 class="theme-item-page-summary-price-item-title">2 Guests</h5>
+                              <p class="theme-item-page-summary-price-item-subtitle"></p>
+                              <p class="theme-item-page-summary-price-item-price">$184.00</p>
+                            </li>
+                            <li class="theme-item-page-summary-price-item">
+                              <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
+                              <p class="theme-item-page-summary-price-item-subtitle"></p>
+                              <p class="theme-item-page-summary-price-item-price">$7.00</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <p class="theme-item-page-summary-price-total">Total
+                          <span>$191.00</span>
+                        </p>
+                      </div>
+                      <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+   {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %} }
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="content-section">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"> Blog Post</legend>
+
+
+            <textarea id="summernote" name="title" >Add blog Title</textarea>
+            <textarea id="summernote2" name="content" >Add BLog Content</textarea>
+
+
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit"> POST </button>
+        </div>
+    </form>
+    <script>
+            $('#summernote').summernote({
+            placeholder: 'Hello bootstrap 4',
+            tabsize: 2,
+            height: 100
+             });
+            $('#summernote2').summernote({
+            placeholder: 'Hello bootstrap 4',
+            tabsize: 2,
+            height: 100
+             });
+
+
+    </script>
+  </div>
+{% endblock content %}

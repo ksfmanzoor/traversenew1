@@ -1,0 +1,339 @@
+{% extends 'experiences/base.html' %}
+{% load static %}
+{% block css_block %}
+    <style>
+
+       body{background-color:#000; overflow:hidden;}
+
+html body [data-ca3_iconfont="ETmodules"]::before {
+    font-family: "ETmodules";
+}
+[data-ca3_icon]::before {
+    font-weight: normal;
+    content: attr(data-ca3_icon);
+}
+
+.ca3-scroll-down-arrow {
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2hldnJvbl90aGluX2Rvd24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiBmaWxsPSJ3aGl0ZSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTE3LjQxOCw2LjEwOWMwLjI3Mi0wLjI2OCwwLjcwOS0wLjI2OCwwLjk3OSwwYzAuMjcsMC4yNjgsMC4yNzEsMC43MDEsMCwwLjk2OWwtNy45MDgsNy44M2MtMC4yNywwLjI2OC0wLjcwNywwLjI2OC0wLjk3OSwwbC03LjkwOC03LjgzYy0wLjI3LTAuMjY4LTAuMjctMC43MDEsMC0wLjk2OWMwLjI3MS0wLjI2OCwwLjcwOS0wLjI2OCwwLjk3OSwwTDEwLDEzLjI1TDE3LjQxOCw2LjEwOXoiLz48L3N2Zz4=);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.theme-hero-text-subtitle {
+font-size: 20px;
+margin-bottom: 0;
+opacity: 1;
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+filter: alpha(opacity=60);
+line-height: 1.6em;
+}
+.ca3-scroll-down-link {
+  cursor:pointer;
+	height: 60px;
+	width: 80px;
+	margin: 0px 0 0 -40px;
+	line-height: 60px;
+	position: absolute;
+	left: 50%;
+	bottom: 0px;
+	color: #FFF;
+	text-align: center;
+	font-size: 70px;
+	z-index: 100;
+	text-decoration: none;
+	text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+
+	-webkit-animation: ca3_fade_move_down 2s ease-in-out infinite;
+	-moz-animation:    ca3_fade_move_down 2s ease-in-out infinite;
+	animation:         ca3_fade_move_down 2s ease-in-out infinite;
+}
+
+
+/*animated scroll arrow animation*/
+@-webkit-keyframes ca3_fade_move_down {
+  0%   { -webkit-transform:translate(0,-20px); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { -webkit-transform:translate(0,20px); opacity: 0; }
+}
+@-moz-keyframes ca3_fade_move_down {
+  0%   { -moz-transform:translate(0,-20px); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { -moz-transform:translate(0,20px); opacity: 0; }
+}
+@keyframes ca3_fade_move_down {
+  0%   { transform:translate(0,-20px); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { transform:translate(0,20px); opacity: 0; }
+}
+  </style>
+{% endblock %}
+
+{% block content %}
+     <div class="theme-hero-area _h-desk-100vh">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg ws-action" style="background-image:url({% static "media/covers" %}/{{ place.coverImage }});" data-parallax="true"></div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body _pv-50">
+        <div class="container">
+                  <div class="theme-hero-area-body _pos-desk-v-c _w-f _pv-mob-50">
+          <div class="container">
+            <div class="theme-search-area-tabs _pb-100" id="vapp">
+              <div class="theme-search-area-tabs-header _c-w _mb-50">
+                <h1 class="theme-search-area-tabs-title theme-search-area-tabs-title-lg">{{ place.title }}</h1>
+              </div>
+              <div class="tabbable">
+                <ul class="nav _fw-b _mb-5 nav-tabs nav-white nav-blank nav-xl nav-active-primary nav-mob-inline" role="tablist">
+{#                    <a aria-controls="SearchAreaTabs-1" role="tab" data-toggle="tab" href="#SearchAreaTabs-1" >Hotels</a>#}
+{#                  </li>#}
+{#                  <li role="presentation">#}
+{#                    <a aria-controls="SearchAreaTabs-2" role="tab" data-toggle="tab" href="#SearchAreaTabs-2">Homes</a>#}
+{#                  </li>#}
+{#                  <li role="presentation">#}
+{#                    <a aria-controls="SearchAreaTabs-3" role="tab" data-toggle="tab" href="#SearchAreaTabs-3">Flights</a>#}
+{#                  </li>#}
+{#                  <li role="presentation">#}
+{#                    <a aria-controls="SearchAreaTabs-4" role="tab" data-toggle="tab" href="#SearchAreaTabs-4">Cars</a>#}
+{#                  </li>#}
+                  <li role="presentation">
+                    <a aria-controls="SearchAreaTabs-1" role="tab" data-toggle="tab" href="#SearchAreaTabs-1">Experiences</a>
+                  </li>
+                </ul>
+                <div class="tab-content _pt-15">
+
+                  <div class="tab-pane active" id="SearchAreaTabs-1" role="tab-panel">
+                    <form class="theme-search-area theme-search-area-white form-group"  method="GET" action="{% url 'search' %}">
+                      <div class="theme-search-area-form">
+                        <div class="row" data-gutter="30">
+                          <div class="col-md-4 ">
+                            <div class="theme-search-area-section first theme-search-area-section-line">
+                               <div class="theme-search-area-section-inner">
+                                <select id="dropdown" class="theme-search-area-section-input dropdown-toggle-transparent"  type="search" name="region">
+                                {% for i in regions %}
+                                  <option value="{{ i.slug }}">{{ i.title }}</option>
+                                  {% endfor %}
+                              </select>
+
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-7 ">
+                            <div class="row" data-gutter="30">
+                              <div class="col-md-4 ">
+                                <div class="theme-search-area-section theme-search-area-section-line">
+                                  <div class="theme-search-area-section-inner">
+                                    <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                    <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                                    <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 ">
+                                <div class="theme-search-area-section theme-search-area-section-line">
+                                  <div class="theme-search-area-section-inner">
+                                    <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                    <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                                    <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 ">
+                                <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Guests">
+                                  <div class="theme-search-area-section-inner">
+                                    <i class="theme-search-area-section-icon lin lin-people"></i>
+                                    <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                                    <div class="quantity-selector-box" id="ExpSearchGuests">
+                                      <div class="quantity-selector-inner">
+                                        <p class="quantity-selector-title">Guests</p>
+                                        <ul class="quantity-selector-controls">
+                                          <li class="quantity-selector-decrement">
+                                            <a href="#">&#45;</a>
+                                          </li>
+                                          <li class="quantity-selector-current">1</li>
+                                          <li class="quantity-selector-increment">
+                                            <a href="#">&#43;</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-1 ">
+                            <button class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow" type="submit">&rarr;</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+           <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
+    </div>
+
+  </div>
+
+ <div class="row row-col-eq row-col-reverse" data-gutter="none">
+
+      <div class="col-md-6 "> 
+        <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+          <div class="theme-hero-text-header">
+            <h2 class="theme-hero-text-title">About</h2>
+            <p class="theme-hero-text-subtitle">{{place.description}}</p>
+          </div>
+        </div>
+      </div>
+       <div class="col-md-6 ">
+        <div class="banner _h-80vh banner-">
+          <div class="banner-bg" style="background-image:url({% static "media/covers" %}/{{ place.coverImage }});"></div>
+          <a class="banner-link" href="#"></a>
+        </div>
+      </div>
+    </div>
+
+     
+       <div class="row row-col-eq row-" data-gutter="none">
+      <div class="col-md-3 ">
+        <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+          <div class="theme-hero-text-header">
+            <h2 class="theme-hero-text-title">Places</h2>
+            <p class="theme-hero-text-subtitle">Explore {{ place.title }}'s most visited attractions </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" >
+        <div class="theme-inline-slider row" data-gutter="10">
+        <div class="row row-col-eq row- owl-carousel " data-items="3" data-loop="true" data-nav="true" data-autoplay="500" data-gutter="none">
+        {% for attraction in attractions.all %}
+{#        {% if experiences.count < 3 %}#}
+          <div class="col-md-16">
+            <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+              <div class="banner-bg" style="background-image:url({% static "media/covers" %}/{{ attraction.coverImage }});"></div>
+              <div class="banner-mask"></div>
+              <a class="banner-link" href="{% url 'attraction-details' attraction.slug %}"></a>
+              <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                <h5 class="banner-title">{{ attraction.title }}</h5>
+                <p class="banner-subtitle _fw-n"></p>
+              </div>
+            </div>
+          </div>
+{#        {% endif %}#}
+        {% endfor %}
+
+
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<div class="row row-col-eq row-col-reverse" data-gutter="none">
+  <div class="col-md-4 ">
+    <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+      <div class="theme-hero-text-header">
+        <h2 class="theme-hero-text-title">Photos</h2>
+        <p class="theme-hero-text-subtitle">Feel the serenity of {{ place.title }}</p>
+      </div>
+    </div>
+  </div>
+      <div class="col-md-8 ">
+        <div class="row magnific-gallery row-col-gap" data-gutter="none">
+        {% for image in gallerys %}
+          <div class="col-xs-2-5 ">
+            <div class="banner banner-sqr banner-animate banner-animate-zoom-in">
+              <div class="banner-bg" style="background-image:url({% static "media/" %}/{{ image }});"></div>
+              <a class="banner-link" href="{% static "media/" %}/{{ image }}"></a>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+
+    <div class="row row-col-eq row-" data-gutter="none">
+      <div class="col-md-3 ">
+        <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+          <div class="theme-hero-text-header">
+            <h2 class="theme-hero-text-title">Places</h2>
+            <p class="theme-hero-text-subtitle">Explore {{ place.title }}'s most popular experiences</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 " >
+        <div class="theme-inline-slider row" data-gutter="10">
+        <div class="row row-col-eq row- owl-carousel "  data-items="3" data-loop="true" data-nav="true" data-autoplay="3000" data-gutter="none">
+        {% for experience in experiences %}
+{#        {% if experiences.count < 3 %}#}
+          <div class="col-md-16 ">
+            <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+              <div class="banner-bg" style="background-image:url({% static "media" %}/{{ experience.image }});"></div>
+              <div class="banner-mask"></div>
+              <a class="banner-link" href="{% url 'experience-details' experience.id %}"></a>
+              <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                <h5 class="banner-title">{{ experience.title }}</h5>
+                <p class="banner-subtitle _fw-n"></p>
+              </div>
+            </div>
+          </div>
+{#        {% endif %}#}
+        {% endfor %}
+
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+<div class="theme-page-section theme-page-section-xxl theme-page-section-black theme-page-section-header-gray">
+      <div class="container">
+        <div class="theme-page-section-header">
+          <h5 class="theme-page-section-title">Travel Inspirations</h5>
+          <p class="theme-page-section-subtitle">Read about most epic inspirations of {{ place.title}}</p>
+        </div>
+    <div class="theme-inline-slider row" data-gutter="10">
+        <div class="owl-carousel" data-items="3" data-loop="true" data-nav="true" data-autoplay="3000" data-gutter="none">
+            {% for post in posts %}
+                <div class="col-md-12 ">
+                    <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+                      <div class="banner-bg" style="background-image:url({% static "media" %}/{{ post.image }});"></div>
+                      <div class="banner-mask"></div>
+                      <a class="banner-link" href="{% url 'post-details' post.id %}"></a>
+                      <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                        <h5 class="banner-title">{{ post.title }}</h5>
+                        <p class="banner-subtitle _fw-n"></p>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}
+
+
+
+{% block script_block %}
+<script>    </script>
+{% endblock %}
+

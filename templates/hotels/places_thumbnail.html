@@ -1,0 +1,10 @@
+{% load thumbnail %}
+<a href="/places/details/{{ name }}">
+    <div>
+        {% thumbnail cover "200x200" crop="center" as im %}
+            <div class="square place-thumbnail" style="background-image: url({{ im.url }});"></div>
+        {% endthumbnail %}
+        <h4 class="text-center">{{ title }}</h4>
+        <h6 class="text-center">{{ subtitle }}</h6>
+    </div>
+</a>

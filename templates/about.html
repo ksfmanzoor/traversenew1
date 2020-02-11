@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %} About Traverse Pakistan {% endblock %}
+
+{% block css_block %}
+    <link href="{% static "css/places_details.css" %}" rel="stylesheet">
+    <style>
+    #cover {
+        background: url(/static/images/about_cover.jpg) center center no-repeat;
+    }
+    .place-title {
+        margin-top: 500px;
+    }
+    </style>
+{% endblock %}
+
+{% block homelink_block %}
+    <a class="navbar-brand page-scroll" href="/#page-top">
+        <div></div>
+    </a>
+{% endblock %}
+
+{% block navbar_listitems %}
+    <li>
+    <li class="active">
+        <a class="page-scroll" href="#"><h4>About</h4></a>
+        <span></span>
+    </li>
+    <li>
+        <a class="page-scroll" href="/places/"><h4>Places</h4></a>
+        <span></span>
+    </li>
+    <li>
+        <a class="page-scroll" href="#contact"><h4>Contact</h4></a>
+        <span></span>
+    </li>
+{% endblock %}
+
+{% block sections %}
+<!-- Intro Section -->
+<section id="cover" class="intro-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="white place-title">Traverse Pakistan</h1>
+
+                <h3 class="white place-subtitle">#LetsTraversePakistan</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h4 class="text-center">We at Traverse Pakistan are determined to `place market` Pakistan,
+                    engage tourism lovers and build a dedicated social presence of
+                    Tourism in Pakistan as a brand. In an effort to de-mystify this often
+                    falsely-perceived country we aim to generate a lot of foreign traction
+                    to this land rich in culture, music and beautiful landscapes.
+                    Our current objective is to build online presence of Pakistan's
+                    tourism; that will promote it's beauty to whole world and a online
+                    platform and where users can be introduced to Beautiful places and
+                    people of Pakistan.</h4>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

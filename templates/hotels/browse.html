@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_block %}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet"/>
+    <link href="{% static "css/places_thumbnail.css" %}" rel="stylesheet">
+    <link href="{% static "css/places_browse.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block homelink_block %}
+    <a class="navbar-brand page-scroll" href="/#page-top">
+        <div></div>
+    </a>
+{% endblock %}
+
+{% block navbar_listitems %}
+    <li>
+        <a class="page-scroll" href="/about"><h4>About</h4></a>
+        <span></span>
+    </li>
+    <li>
+        <a class="page-scroll" href="/places"><h4>Places</h4></a>
+        <span></span>
+    </li>
+    <li>
+        <a class="page-scroll" href="#contact"><h4>Contact</h4></a>
+        <span></span>
+    </li>
+{% endblock %}
+
+{% block sections %}
+    <!-- Intro Section -->
+    <section id="cover" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="white place-title" id="place_title">Browse through Pakistan</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="search-results" class="bg-grey intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br/>
+
+                            <select multiple="multiple">
+                                {% for ts in tagSuggestions %}
+                                    <option value="{{ ts }}">{{ ts }}</option>
+                                {% endfor %}
+                            </select>
+                            <button id="tag-search-button" class="expand btn-flat btn btn-primary">Tag Search <span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </div>
+
+                    <div class="row" id="browse-pane">
+
+                        <div class="col-sm-12">
+                            <div class="list-group" id="region-list">
+                                {% if selected_region == None %}
+                                    <a id="anyRegion" class="list-group-item active" data-value="any">Anywhere in
+                                        Pakistan</a>
+                                {% else %}
+                                    <a id="anyRegion" class="list-group-item" data-value="any">Anywhere in Pakistan</a>
+                                {% endif %}
+
+                                {% for region in regions %}
+
+                                    {% if selected_region == region.name %}
+                                        <a class="list-group-item active"
+                                           data-value="{{ region.name }}">{{ region.title }}</a>
+                                    {% else %}
+                                        <a class="list-group-item" data-value="{{ region.name }}">{{ region.title }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <div class="list-group" id="category-list">
+                                {% if selected_category == None %}
+                                    <a id="anyCategory" class="list-group-item active" data-value="any">All Kinds of
+                                        Places</a>
+                                {% else %}
+                                    <a id="anyCategory" class="list-group-item" data-value="any">All Kinds of Places</a>
+                                {% endif %}
+                                {% for category in categories %}
+                                    {% if selected_category == category.name %}
+                                        <a class="list-group-item active"
+                                           data-value="{{ category.name }}">{{ category.title }}</a>
+                                    {% else %}
+                                        <a class="list-group-item"
+                                           data-value="{{ category.name }}">{{ category.title }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="inline-headers col-md-2 col-md-offset-10">
+                            <h2 id="result-count">0</h2>
+                            &nbsp;
+                            <h4 id="result-count-subtext">results</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="places-container" class="grid js-masonry"
+                                 data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": ".grid-sizer", "percentPosition": "true" }'>
+                            </div>
+                            <div class="loading">
+                                <img class="center-block" src="{% static "images/loading.gif" %}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block script_block %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script>
+        $(function () {
+            $('[rel="txtTooltip"]').tooltip({'title': 'hi', 'placement': 'top'});
+            var activeRegions,
+                    activeCategories,
+                    tags;
+
+            {% if selected_region %}
+                activeRegions = ["{{ selected_region }}", "{{ selected_region }}"];
+            {% else %}
+                activeRegions = [];
+            {% endif %}
+
+            {% if selected_category %}
+                activeCategories = ["{{ selected_category }}"];
+            {% else %}
+                activeCategories = [];
+            {% endif %}
+
+            var getDomObject = function (name, title, subtitle, thumbnailUrl) {
+                var div_thumb = $("<div></div>").addClass("square place-thumbnail").css("background-image", "url(" + thumbnailUrl + ")"),
+                        titleNode = $("<h4></h4>").addClass("text-center").text(title),
+                        subtitleNode = $("<h6></h6>").addClass("text-center").text(subtitle),
+                        linker = $("<a></a>").attr("href", "/places/details/" + name),
+                        mother = $("<div></div>").addClass("grid-item");
+
+                mother.append(linker.append($("<div></div>").append(div_thumb, titleNode, subtitleNode)));
+                return mother;
+            };
+
+            var updateResults = function () {
+                $("#places-container").html('');
+                $(".loading").show();
+                $.get('/places/api', {
+                    "regions": JSON.stringify(activeRegions),
+                    "categories": JSON.stringify(activeCategories),
+                    "tags": JSON.stringify(tags),
+                }, function (data) {
+                    var container = $("#places-container");
+                    data = JSON.parse(data);
+
+                    $("#result-count").text(data.places.length);
+                    $("#tag-input-box").val('');
+                    tags = [];
+
+                    if (data.places.length > 0) {
+                        var thumbnails = data.thumbnails;
+
+                        container.html("<div class=\"grid-sizer\"></div>");
+                        for (var i = 0; i < data.places.length; i++) {
+                            var place = data.places[i],
+                                    domObj = getDomObject(place.name, place.title, place.subtitle, thumbnails[i]);
+
+                            container.append(domObj);
+                        }
+                    } else {
+                        container.html("");
+                        container.append($("<h2></h2>").addClass("text-center").text("Sorry, we couldn't find anything :("));
+                    }
+                    $(".loading").hide();
+                });
+            };
+
+            // updating results for first load
+            updateResults();
+
+            $("#tag-search-button").on('click', function () {
+                $("#anyRegion, #anyCategory").trigger('click');
+                tags = $("select").val();
+                updateResults();
+            });
+
+            $("#region-list").find("a").on('click', function () {
+                if ($(this).hasClass("active")) {
+                    var toRemove = $(this).attr("data-value");
+                    activeRegions.splice($.inArray(toRemove, activeRegions), 1);
+                    if (activeRegions.length == 0)
+                        $("#anyRegion").addClass("active");
+                    $(this).removeClass("active");
+                } else {
+                    activeRegions.push($(this).attr("data-value"));
+                    $("#anyRegion").removeClass("active");
+                    $(this).addClass("active");
+                }
+                updateResults();
+            });
+
+            var anyRegion = $("#anyRegion");
+            anyRegion.off('click');
+            anyRegion.on('click', function () {
+                if (!$(this).hasClass("active")) {
+                    activeRegions = [];
+                    $("#region-list").find("a").removeClass("active");
+                    $(this).addClass("active");
+                    updateResults();
+                }
+            });
+
+            $("#category-list").find("a").on('click', function () {
+                if ($(this).hasClass("active")) {
+                    var toRemove = $(this).attr("data-value");
+                    activeCategories.splice($.inArray(toRemove, activeCategories), 1);
+                    if (activeCategories.length == 0)
+                        $("#anyCategory").addClass("active");
+                    $(this).removeClass("active");
+                } else {
+                    activeCategories.push($(this).attr("data-value"));
+                    $("#anyCategory").removeClass("active");
+                    $(this).addClass("active");
+                }
+                updateResults();
+            });
+
+            var anyCategory = $("#anyCategory");
+            anyCategory.off('click');
+            anyCategory.on('click', function () {
+                if (!$(this).hasClass("active")) {
+                    activeCategories = [];
+                    $("#category-list").find("a").removeClass("active");
+                    $(this).addClass("active");
+                    updateResults();
+                }
+            });
+
+            $("select").select2({
+                maximumSelectSize: 5
+            });
+        });
+    </script>
+    <script src="{% static "js/best-bg-ever.js" %}"></script>
+    <script>
+        $(function () {
+            var urlArray = [];
+            {% for category in categories %}
+                {% with "images/category_tiles/"|add:category.name|add:".jpg" as cover %}
+                    urlArray.push("{% static cover %}");
+                {% endwith %}
+            {% endfor %}
+
+            best_bg_ever(urlArray, $("#cover"));
+        });
+    </script>
+{% endblock %}

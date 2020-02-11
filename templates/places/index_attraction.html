@@ -1,0 +1,530 @@
+{% extends 'experiences/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+    <div class="theme-hero-area _h-desk-100vh">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg ws-action" style="background-image:url({% static "media/covers" %}/{{ attraction.coverImage }});" data-parallax="true"></div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body _pv-50">
+        <div class="container">
+          <div class="theme-hero-text _pos-desk-v-c _w-f">
+            <div class="theme-hero-text-header">
+              <h2 class="theme-hero-text-title _ta-c _tt-uc _c-w theme-hero-text-title-xxl">{{ attraction.title }}</h2>
+            </div>
+          </div>
+          <div class="_pos-desk-a-b">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="theme-search-area-tabs">
+                    <div class="tabbable">
+                      <ul class="nav nav-tabs nav-blank nav-white nav-center nav-lg nav-mob-inline" role="tablist">
+                        <li class="active" role="presentation">
+                          <a class="_pb-15" aria-controls="SearchAreaTabs-1" role="tab" data-toggle="tab" href="#SearchAreaTabs-1">Hotels</a>
+                        </li>
+                        <li role="presentation">
+                          <a class="_pb-15" aria-controls="SearchAreaTabs-2" role="tab" data-toggle="tab" href="#SearchAreaTabs-2">Homes</a>
+                        </li>
+                        <li role="presentation">
+                          <a class="_pb-15" aria-controls="SearchAreaTabs-3" role="tab" data-toggle="tab" href="#SearchAreaTabs-3">Flights</a>
+                        </li>
+                        <li role="presentation">
+                          <a class="_pb-15" aria-controls="SearchAreaTabs-4" role="tab" data-toggle="tab" href="#SearchAreaTabs-4">Cars</a>
+                        </li>
+                        <li role="presentation">
+                          <a class="_pb-15" aria-controls="SearchAreaTabs-5" role="tab" data-toggle="tab" href="#SearchAreaTabs-5">Experiences</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="SearchAreaTabs-1" role="tab-panel">
+                          <div class="theme-search-area theme-search-area-stacked">
+                            <div class="theme-search-area-form">
+                              <div class="row" data-gutter="none">
+                                <div class="col-md-11 ">
+                                  <div class="row" data-gutter="none">
+                                    <div class="col-md-3 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                          <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                          <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Rooms">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-tag"></i>
+                                          <input class="theme-search-area-section-input" value="1 Room" type="text"/>
+                                          <div class="quantity-selector-box" id="HotelSearchRooms">
+                                            <div class="quantity-selector-inner">
+                                              <p class="quantity-selector-title">Rooms</p>
+                                              <ul class="quantity-selector-controls">
+                                                <li class="quantity-selector-decrement">
+                                                  <a href="#">&#45;</a>
+                                                </li>
+                                                <li class="quantity-selector-current">1</li>
+                                                <li class="quantity-selector-increment">
+                                                  <a href="#">&#43;</a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-people"></i>
+                                          <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                                          <div class="quantity-selector-box" id="HotelSearchGuests">
+                                            <div class="quantity-selector-inner">
+                                              <p class="quantity-selector-title">Guests</p>
+                                              <ul class="quantity-selector-controls">
+                                                <li class="quantity-selector-decrement">
+                                                  <a href="#">&#45;</a>
+                                                </li>
+                                                <li class="quantity-selector-current">1</li>
+                                                <li class="quantity-selector-increment">
+                                                  <a href="#">&#43;</a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                  <button class="theme-search-area-submit _mt-0 _fw-n theme-search-area-submit-no-border">Search</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="SearchAreaTabs-2" role="tab-panel">
+                          <div class="theme-search-area theme-search-area-stacked">
+                            <div class="theme-search-area-form">
+                              <div class="row" data-gutter="none">
+                                <div class="col-md-11 ">
+                                  <div class="row" data-gutter="none">
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                          <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                          <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-people"></i>
+                                          <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                                          <div class="quantity-selector-box" id="RoomSearchGuests">
+                                            <div class="quantity-selector-inner">
+                                              <p class="quantity-selector-title">Guests</p>
+                                              <ul class="quantity-selector-controls">
+                                                <li class="quantity-selector-decrement">
+                                                  <a href="#">&#45;</a>
+                                                </li>
+                                                <li class="quantity-selector-current">1</li>
+                                                <li class="quantity-selector-increment">
+                                                  <a href="#">&#43;</a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                  <button class="theme-search-area-submit _mt-0 _fw-n theme-search-area-submit-no-border">Search</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="SearchAreaTabs-3" role="tab-panel">
+                          <div class="theme-search-area theme-search-area-stacked">
+                            <div class="theme-search-area-form">
+                              <div class="row" data-gutter="none">
+                                <div class="col-md-4 ">
+                                  <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                    <div class="theme-search-area-section-inner">
+                                      <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                                      <input class="theme-search-area-section-input typeahead" type="text" placeholder="Departure" data-provide="typeahead"/>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-7 ">
+                                  <div class="row" data-gutter="none">
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                          <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                          <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Passengers">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-people"></i>
+                                          <input class="theme-search-area-section-input" value="1 Passenger" type="text"/>
+                                          <div class="quantity-selector-box" id="FlySearchPassengers">
+                                            <div class="quantity-selector-inner">
+                                              <p class="quantity-selector-title">Passengers</p>
+                                              <ul class="quantity-selector-controls">
+                                                <li class="quantity-selector-decrement">
+                                                  <a href="#">&#45;</a>
+                                                </li>
+                                                <li class="quantity-selector-current">1</li>
+                                                <li class="quantity-selector-increment">
+                                                  <a href="#">&#43;</a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                  <button class="theme-search-area-submit _mt-0 _fw-n theme-search-area-submit-no-border">Search</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="SearchAreaTabs-4" role="tab-panel">
+                          <div class="theme-search-area theme-search-area-stacked">
+                            <div class="theme-search-area-form">
+                              <div class="row" data-gutter="none">
+                                <div class="col-md-7 ">
+                                  <div class="row" data-gutter="none">
+                                    <div class="col-md-6 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                                          <input class="theme-search-area-section-input typeahead" type="text" placeholder="Pick up location" data-provide="typeahead"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                                          <input class="theme-search-area-section-input typeahead" type="text" placeholder="Drop off location" data-provide="typeahead"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                  <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                    <div class="theme-search-area-section-inner">
+                                      <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                      <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                                      <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                  <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                    <div class="theme-search-area-section-inner">
+                                      <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                      <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                                      <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                  <button class="theme-search-area-submit _mt-0 _fw-n theme-search-area-submit-no-border">Search</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="SearchAreaTabs-5" role="tab-panel">
+                          <div class="theme-search-area theme-search-area-stacked">
+                            <div class="theme-search-area-form">
+                              <div class="row" data-gutter="none">
+                                <div class="col-md-11 ">
+                                  <div class="row" data-gutter="none">
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                          <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                          <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="theme-search-area-section _c-d theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
+                                        <div class="theme-search-area-section-inner">
+                                          <i class="theme-search-area-section-icon lin lin-people"></i>
+                                          <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                                          <div class="quantity-selector-box" id="ExpSearchGuests">
+                                            <div class="quantity-selector-inner">
+                                              <p class="quantity-selector-title">Guests</p>
+                                              <ul class="quantity-selector-controls">
+                                                <li class="quantity-selector-decrement">
+                                                  <a href="#">&#45;</a>
+                                                </li>
+                                                <li class="quantity-selector-current">1</li>
+                                                <li class="quantity-selector-increment">
+                                                  <a href="#">&#43;</a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                  <button class="theme-search-area-submit _mt-0 _fw-n theme-search-area-submit-no-border">Search</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+
+{% block section %}
+
+   <div class="row row-col-eq row-" data-gutter="none">
+      <div class="col-md-3 ">
+        <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+          <div class="theme-hero-text-header">
+            <h2 class="theme-hero-text-title">Places</h2>
+            <p class="theme-hero-text-subtitle">Explore {{ place.title }}'s most visited attractions </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" >
+        <div class="theme-inline-slider row" data-gutter="10">
+        <div class="row row-col-eq row- owl-carousel " data-items="3" data-loop="true" data-nav="true" data-autoplay="500" data-gutter="none">
+        {% for attraction in attractions.all %}
+{#        {% if experiences.count < 3 %}#}
+          <div class="col-md-16">
+            <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+              <div class="banner-bg" style="background-image:url({% static "media/covers" %}/{{ attraction.coverImage }});"></div>
+              <div class="banner-mask"></div>
+              <a class="banner-link" href="{% url 'attraction-details' attraction.slug %}"></a>
+              <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                <h5 class="banner-title">{{ attraction.title }}</h5>
+                <p class="banner-subtitle _fw-n"></p>
+              </div>
+            </div>
+          </div>
+{#        {% endif %}#}
+        {% endfor %}
+
+
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row row-col-eq row-col-reverse" data-gutter="none">
+      <div class="col-md-6 ">
+        <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+          <div class="theme-hero-text-header">
+            <h2 class="theme-hero-text-title">About</h2>
+            <p class="theme-hero-text-subtitle">{{ attraction.subtitle }} </p>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 ">
+        <div class="banner _h-80vh banner-">
+          <div class="banner-bg" style="background-image:url({% static "media/covers" %}/{{ attraction.coverImage }});"></div>
+          <a class="banner-link" href="#"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-col-eq row-" data-gutter="none">
+      <div class="col-md-3 ">
+        <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+          <div class="theme-hero-text-header">
+            <h2 class="theme-hero-text-title">Places</h2>
+            <p class="theme-hero-text-subtitle">Explore {{ attraction.title }}'s nearby attractions</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 ">
+        <div class="row row-col-eq row-" data-gutter="none">
+
+        {% for x in attractions.all %}
+
+          <div class="col-md-4 ">
+            <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+              <div class="banner-bg" style="background-image:url({% static "media/covers" %}/{{ attraction.coverImage }});"></div>
+              <div class="banner-mask"></div>
+              <a class="banner-link" href="#"></a>
+              <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                <h5 class="banner-title">{{ x.title }}</h5>
+                <p class="banner-subtitle _fw-n">{{ x.content }}</p>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-col-eq row-col-reverse" data-gutter="none">
+      <div class="col-md-4 ">
+        <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+          <div class="theme-hero-text-header">
+            <h2 class="theme-hero-text-title">Photos</h2>
+            <p class="theme-hero-text-subtitle">Feel the serenity of {{ attraction.title }} </p>
+          </div>
+        </div>
+      </div>
+          <div class="col-md-8 ">
+            <div class="row magnific-gallery row-col-gap" data-gutter="none">
+            {% for image in gallerys %}
+              <div class="col-xs-2-5">
+                <div class="banner banner-sqr banner-animate banner-animate-zoom-in">
+                  <div class="banner-bg" style="background-image:url({% static "media/" %}/{{ image }});"></div>
+                  <a class="banner-link" href="{% static "media/" %}/{{ image }}"></a>
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+      </div>
+
+
+
+    <div class="row row-col-eq row-" data-gutter="none">
+      <div class="col-md-3 ">
+        <div class="theme-hero-text _pos-desk-v-c _p-60 ">
+          <div class="theme-hero-text-header">
+            <h2 class="theme-hero-text-title">Places</h2>
+            <p class="theme-hero-text-subtitle">Explore {{ attraction.title }}'s most popular experiences</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 " >
+        <div class="theme-inline-slider row" data-gutter="10">
+        <div class="row row-col-eq row- owl-carousel "  data-items="3" data-loop="true" data-nav="true" data-autoplay="3000" data-gutter="none">
+        {% for experience in experiences %}
+{#        {% if experiences.count < 3 %}#}
+          <div class="col-md-16 ">
+            <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+              <div class="banner-bg" style="background-image:url({% static "media" %}/{{ experience.image }});"></div>
+              <div class="banner-mask"></div>
+              <a class="banner-link" href="{% url 'experience-details' experience.id %}"></a>
+              <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                <h5 class="banner-title">{{ experience.title }}</h5>
+                <p class="banner-subtitle _fw-n"></p>
+              </div>
+            </div>
+          </div>
+{#        {% endif %}#}
+        {% endfor %}
+
+
+            </div>
+        </div>
+      </div>
+    </div>
+<div class="theme-page-section theme-page-section-xxl theme-page-section-white theme-page-section-header-gray">
+      <div class="container">
+        <div class="theme-page-section-header">
+          <h5 class="theme-page-section-title">Travel Inspirations</h5>
+          <p class="theme-page-section-subtitle">Read about most epic inspirations of {{ place.title}}</p>
+        </div>
+    <div class="theme-inline-slider row" data-gutter="10">
+        <div class="owl-carousel" data-items="3" data-loop="true" data-nav="true">
+            {% for post in posts %}
+                <div class="col-md-12 ">
+                    <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+                      <div class="banner-bg" style="background-image:url({% static "media" %}/{{ post.image }});"></div>
+                      <div class="banner-mask"></div>
+                      <a class="banner-link" href="{% url 'post-details' post.id %}"></a>
+                      <div class="banner-caption banner-caption-bottom banner-caption-grad">
+                        <h5 class="banner-title">{{ post.title }}</h5>
+                        <p class="banner-subtitle _fw-n"></p>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock section %}
