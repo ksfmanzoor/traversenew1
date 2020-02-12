@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from places.models import Place
 from places.models import Attraction
 from polymorphic.models import PolymorphicModel
-from django.utils import timezone
+from django.utils import timezone   
 
 # Create your models here.
 

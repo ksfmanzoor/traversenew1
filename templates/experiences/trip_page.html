@@ -261,9 +261,9 @@ p
                     <div class="theme-search-area theme-search-area-vert">
 
                     <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
-                      <h1 class="theme-search-area-title">{{ trip.price }}            <span>PKR / person</span> </h1>
+                      <h1 class="theme-search-area-title">{{ trip.price }} <span>PKR / person</span> </h1>
                     </div>
-                    <div class="theme-search-area-form method="POST" action="{% url 'booknow' %}">
+                    <div class="theme-search-area-form form-group" method= "POST" action = "{% url 'booknow' %}" > 
                       <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
                         
                       </div>
@@ -312,7 +312,7 @@ p
                           <span>$191.00</span>
                         </p>
                       </div>
-                      <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
+                      <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved" type="submit">Book Now</button>
                     </div>
                   </div>
                   </div>

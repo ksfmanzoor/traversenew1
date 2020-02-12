@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'places.apps.PlacesConfig',
     'experiences.apps.ExperiencesConfig',
+    'bookings.apps.BookingsConfig',
     'hotels.apps.HotelsConfig',
     'geoposition',
     'taggit',

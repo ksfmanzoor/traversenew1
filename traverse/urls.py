@@ -24,6 +24,7 @@ from rest_framework import routers
 from places.views import HomeView, TemplateView
 from experiences.views import ExperienceSearchView
 from users.views import RegisterView
+from bookings.views import TripBookingView
 router = routers.DefaultRouter()
 
 urlpatterns = [
@@ -34,6 +35,7 @@ urlpatterns = [
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
     path('search/', ExperienceSearchView.as_view(), name='search'),
+    path('booknow/', TripBookingView.as_view(), name='booknow'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), {'next_page': 'about'}, name='logout'),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), name='password_reset'),
