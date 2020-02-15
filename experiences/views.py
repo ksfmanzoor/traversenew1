@@ -11,7 +11,7 @@ from places.models import Place, Region
 
 class ExperienceListView(ListView):
     model = Experience
-    template_name = 'experiences/home.html'
+    template_name = 'experiences/exp_home.html'
 
 
     def get_context_data(self, **kwargs):
@@ -19,7 +19,9 @@ class ExperienceListView(ListView):
         context = super().get_context_data(**kwargs)
         # Add in the category
         context['category_list'] = Category.objects.all()
-        context['trips'] = Trip.objects.all()
+        context['experiences'] = Experience.objects.all()
+        context['regions'] = Region.objects.all()
+
         return context
 
 
@@ -34,8 +36,7 @@ class ExperienceSearchView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         region_name = self.request.GET['region']
-        context['experiences'] = Experience.objects.filter(location__region__slug=region_name)
-        context['trips'] = Trip.objects.filter(location__region__slug=region_name)
+        context['trips'] = Trip.objects.filter(location__region__slug=region_name).distinct()
         context['selected_region'] = Region.objects.filter(slug=region_name)
         context['regions'] = Region.objects.all()
         return context
@@ -101,6 +102,7 @@ class TripListView(ListView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in the category
+        context['regions'] = Region.objects.all()
         context['category_list'] = Category.objects.all()
         context['trips'] = Trip.objects.all()
         return context

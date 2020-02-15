@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css_block %}
 
-
-
-
-{% endblock %}
 {% block content %}
-    <div class="theme-hero-area front">
+
+      <div class="theme-hero-area front">
       <div class="theme-hero-area-bg-wrap">
         <div class="theme-hero-area-bg theme-hero-area-bg-blur" style="background-image:url(img/gmtx7uc6lnc_1500x800.jpg);"></div>
         <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
@@ -173,77 +169,22 @@
         </div>
       </div>
     </div>
-   <!-- <div class="theme-page-section theme-page-section-white theme-page-section-header-gray">
-      <div class="container">
-        <div class="theme-page-section-header">
-          <h5 class="theme-page-section-title">Top Experiences</h5>
-          <p class="theme-page-section-subtitle"> Wintness every Destination through our Lens  </p>
-        </div>
-        <div class="theme-inline-slider row" data-gutter="10">
-          <div class="owl-carousel" data-items="3" data-loop="true" data-nav="true">
-         {% for experience in experiences %}
 
-            <div class="col-md-12 ">
-            <div class="banner _h-60vh banner-animate banner-animate-mask-in">
-              <div class="banner-bg" style="background-image:url({% static "media" %}/{{ experience.image }});"></div>
-              <div class="banner-mask"></div>
-              <a class="banner-link" href="{% url 'experience-details' experience.slug %}"></a>
-              <div class="banner-caption banner-caption-bottom banner-caption-grad">
-                <h5 class="banner-title">{{ experience.title }}</h5>
-                <p class="banner-subtitle _fw-n"></p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-           </div>
-        </div>
-      </div>
-    </div> -->
-
-
- <!--    <div class="theme-page-section theme-page-section-white theme-page-section-header-gray">
-      <div class="container">
-        <div class="theme-page-section-header">
-          <h5 class="theme-page-section-title">Exclusive Immersions</h5>
-          <p class="theme-page-section-subtitle">From adventure to leisure Traverse has it all</p>
-        </div>
-        <div class="theme-inline-slider row" data-gutter="10">
-          <div class="owl-carousel" data-items="3" data-loop="true" data-nav="true">
-         {% for trip in trips %}
-
-            <div class="col-md-12 ">
-            <div class="banner _h-60vh banner-animate banner-animate-mask-in">
-              <div class="banner-bg" style="background-image:url({% static "media" %}/{{ trip.image }});"></div>
-              <div class="banner-mask"></div>
-              <a class="banner-link" href="{% url 'trip-details' trip.slug %}"></a>
-              <div class="banner-caption banner-caption-bottom banner-caption-grad">
-                <h5 class="banner-title">{{ trip.title }}</h5>
-                <p class="banner-subtitle _fw-n"></p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-           </div>
-        </div>
-      </div>
-    </div>
- -->
-
-    <div class="theme-page-section theme-page-section-xxl theme-page-section-white">
+<div class="theme-page-section theme-page-section-xxl theme-page-section-white">
       <div class="container">
         <div class="theme-page-section-header theme-page-section-header-gray">
-          <h5 class="theme-page-section-title">Popular Immersions</h5>
+          <h5 class="theme-page-section-title">Popular Experiences</h5>
           <p class="theme-page-section-subtitle">From adventure to leisure Traverse has it all</p>
         </div>
         <div class="row row-col-gap" data-gutter="20">
-         {% for trip in trips %}
+         {% for experience in experiences %}
           <div class= "col-md-4 col-md-4 col-md-4">
             <div class="banner _h-40vh _br-3 _bsh-xl _bsh-light banner-animate banner-animate-mask-in">
-              <div class="banner-bg" style="background-image:url({% static "media" %}/{{ trip.image }});"></div>
+              <div class="banner-bg" style="background-image:url({% static "media" %}/{{ experience.image }});"></div>
               <div class="banner-mask"></div>
-              <a class="banner-link" href="{% url 'trip-details' trip.slug %}"></a>
+              <a class="banner-link" href="{% url 'experience-details' experience.slug %}"></a>
               <div class="banner-caption _pt-100 banner-caption-bottom banner-caption-grad">
-                <h5 class="banner-title">{{ trip.title }}</h5>
+                <h5 class="banner-title">{{ experience.title }}</h5>
               </div>
             </div>
           </div>
@@ -252,9 +193,4 @@
       </div>
     </div>
 
-{% endblock %}
-
-{% block script %}
-
-
-{% endblock %}
+{% endblock content %}

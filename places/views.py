@@ -137,6 +137,7 @@ class AttractionDetailView(SingleObjectMixin, ListView):
 
         context['attractions'] = Attraction.objects.filter(location__in=places).distinct()
         context['places'] = places
+        context['attraction'] = self.object
         context['gallerys'] = images
         context['experiences'] = Experience.objects.filter(location__in=places).distinct()
         context['posts'] = Post.objects.filter(location__in=places).distinct()

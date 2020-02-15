@@ -1,115 +1,240 @@
-
-
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css_block %}
 
-{% block content %}
-    <div class="theme-hero-area _h-mob-60vh">
+<style>
+   
+
+    .white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 60px;
+  width: auto;
+  max-width: 700px;
+  margin: 20px auto;
+  transition: 1s all;
+}
+
+.mfp-bg {}
+
+.mfp-fade.mfp-bg {
+  opacity: 0;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+}
+
+
+/* overlay animate in */
+
+.mfp-fade.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+
+
+/* overlay animate out */
+
+.mfp-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+  transition: all 0.4s ease-out;
+}
+
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}
+
+.theme-hero-area-bg-wrap{
+
+    filter: brightness(80%)
+    }
+h1{
+    font-size: 60px
+    }
+p
+    {
+    margin-left: 20px
+    }
+.btn-white{
+    margin-left: 2px
+    }
+
+ ._h-100vh{
+
+    height: 80vh !important
+
+    }
+
+    .wrapper-dropdown-5 {
+    /* Size & position */
+    position: relative;
+    width: 254px;
+    margin: 40px auto;
+    padding: 12px 15px;
+
+    /* Styles */
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-dropdown-5:after { /* Little arrow */
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #4cbeff transparent;
+}
+
+.wrapper-dropdown-5 .dropdown {
+    /* Size & position */
+    position: relative;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    /* Styles */
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-top: none;
+    border-bottom: none;
+    list-style: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+
+    /* Hiding */
+    max-height: 0;
+    overflow: hidden;
+}
+
+.wrapper-dropdown-5 .dropdown li {
+    padding: 0 10px ;
+}
+
+.wrapper-dropdown-5 .dropdown li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 0;
+    transition: all 0.3s ease-out;
+    border-bottom: 1px solid #e6e8ea;
+}
+
+.wrapper-dropdown-5 .dropdown li:last-of-type a {
+    border: none;
+}
+
+.wrapper-dropdown-5 .dropdown li i {
+    margin-right: 5px;
+    color: inherit;
+    vertical-align: middle;
+}
+
+/* Hover state */
+
+.wrapper-dropdown-5 .dropdown li:hover a {
+    color: #57a9d9;
+}
+
+/* Active state */
+
+.wrapper-dropdown-5.active {
+    border-radius: 5px 5px 0 0;
+    background: #4cbeff;
+    box-shadow: none;
+    border-bottom: none;
+    color: white;
+}
+
+.wrapper-dropdown-5.active:after {
+    border-color: #82d1ff transparent;
+}
+
+.wrapper-dropdown-5.active .dropdown {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    max-height: 400px;
+}
+.itinerary-button{
+  display: flex;
+  justify-content: center;
+}
+
+
+</style>
+
+
+{% endblock %}
+
+
+
+
+
+{%block content%}
+
+
+    <div class="theme-hero-area">
       <div class="theme-hero-area-bg-wrap">
-        <div class="theme-hero-area-bg" style="background-image:url({% static "media" %}/{{ experience.image }});"></div>
-        <div class="theme-hero-area-mask"></div>
+        <div class="theme-hero-area-bg-video theme-hero-area-bg-video-blur" id="youtube-video" data-video-id="MIEDJ7bpqOI"></div>
+        <div class="theme-hero-area-bg-pattern theme-hero-area-bg-pattern-strong" style="background-image:url({% static "media" %}/{{ experience.image }});"></div>
         <div class="theme-hero-area-inner-shadow"></div>
       </div>
       <div class="theme-hero-area-body">
         <div class="container">
-          <div class="theme-item-page-header _pt-300 _pb-50 _pt-mob-100 theme-item-page-header-white">
+          <div class="theme-item-page-header _pv-200 _mt-0 theme-item-page-header-white theme-item-page-header-center">
             <div class="theme-item-page-header-body">
-              <div class="theme-item-page-header-rating">
-                <ul class="theme-item-page-header-rating-stars">
-                  <li>
-                    <i class="fa fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fa fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fa fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fa fa-star-half-o"></i>
-                  </li>
-                  <li>
-                    <i class="fa fa-star-o"></i>
-                  </li>
-                </ul>
-                <p class="theme-item-page-header-rating-title">30 reviews</p>
-              </div>
-              <h1 class="theme-item-page-header-title _ff-d _fw-200">{{ experience.title }}</h1>
-              <div class="theme-item-page-header-price theme-item-page-header-price-xl">
-                <p class="theme-item-page-header-price-body">
-                  <b>$90</b>
-                  <span>/ person</span>
-                </p>
-              </div>
-              <ul class="theme-breadcrumbs">
-                <li>
-                  <p class="theme-breadcrumbs-item-title">
-                    <a href="index-2.html">Home</a>
-                  </p>
-                </li>
-                <li>
-                  <p class="theme-breadcrumbs-item-title">
-                    <a href="#">United Kindom</a>
-                  </p>
-                  <p class="theme-breadcrumbs-item-subtitle">3,245 offers</p>
-                </li>
-                <li>
-                  <p class="theme-breadcrumbs-item-title">
-                    <a href="#">England</a>
-                  </p>
-                  <p class="theme-breadcrumbs-item-subtitle">615 offers</p>
-                </li>
-                <li>
-                  <p class="theme-breadcrumbs-item-title">
-                    <a href="#">London Experiences</a>
-                  </p>
-                  <p class="theme-breadcrumbs-item-subtitle">312 offers</p>
-                </li>
-              </ul>
+              
+              <h1 class="theme-item-page-header-title">{{ experience.title }}</h1>
+
+              
+            
             </div>
           </div>
         </div>
       </div>
     </div>
-   <div class="theme-page-section _pt-0 _pb-60 front theme-page-section-gray">
+    <div class="theme-page-section _pt-0 _pb-60 front theme-page-section-gray">
       <div class="container">
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
             <div class="_ph-30 _bg-w _bsh-xl _mt--50">
               <div class="row row-col-static row-eq-height row-col-border" id="sticky-parent" data-gutter="60">
                 <div class="col-md-8 ">
-                  <div class="theme-item-page-details _pv-30 theme-item-page-details-first-nm">
-                    <div class="theme-item-page-details-section">
-                      <div class="row magnific-gallery row-col-gap" data-gutter="10">
-                      {% for image in gallerys %}
-                        <div class="{% cycle "col-md-4" "col-md-4" "col-md-4" "col-md-7" "col-md-5" "col-md-6" "col-md-6"  %} ">
-                          <div class="banner _h-20vh _h-mob-15vh banner-">
-                            <div class="banner-bg" style="background-image:url({% static "media" %}/{{ image }});"></div>
-                            <a class="banner-link" href="{% static "media/" %}/{{ image }}"></a>
-                          </div>
-                        </div>
-                      {% endfor %}
-                      </div>
-                    </div>
-                    <div class="theme-item-page-details-section">
-                      <h5 class="theme-item-page-details-section-title">Overview</h5>
-                      <div class="theme-item-page-desc">
-                       <p> {{ experience.overview|linebreaks }}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 ">
-                  <div class="sticky-col _pv-30 _mob-h">
-                    <div class="theme-search-area theme-search-area-vert">
-
+                 
+                  <div class="theme-search-area _mt-30 _desk-h theme-search-area-vert">
                     <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
-                      <h1 class="theme-search-area-title">{{ trip.price }}            <span>PKR / person</span> </h1>
+                      <h1 class="theme-search-area-title"> {{ experience.price }} PKR per person</h1>
                     </div>
                     <div class="theme-search-area-form">
                       <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
-
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                          <input class="theme-search-area-section-input datePickerSingle _mob-h" value="Wed 06/27" type="text"/>
+                          <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                        </div>
                       </div>
                       <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
                         <div class="theme-search-area-section-inner">
@@ -119,16 +244,11 @@
                             <div class="quantity-selector-inner">
                               <p class="quantity-selector-title">Guests</p>
                               <ul class="quantity-selector-controls">
-                                <li class="quantity-selector-decrement">
+                                <li class="quantity-selector-decrement" onclick="MultipyMobile()">
                                   <a href="#">&#45;</a>
-                                    <div id="root">
-                                         {{ greeting }}
-                                    <br>
-                                    <input v-model="greeting">
-                                    </div>
                                 </li>
-                                <li class="quantity-selector-current">1</li>
-                                <li class="quantity-selector-increment">
+                                <li class="quantity-selector-current" id="totalGuest">1</li>
+                                <li class="quantity-selector-increment" onclick="MultipyMobile()">
                                   <a href="#">&#43;</a>
                                 </li>
                               </ul>
@@ -137,7 +257,6 @@
                         </div>
                       </div>
                       <div class="theme-item-page-summary-price _mb-20">
-                        <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapseMobile" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapseMobile">Show summary</a>
                         <div class="collapse" id="summaryPriceCollapseMobile">
                           <ul class="theme-item-page-summary-price-list">
                             <li class="theme-item-page-summary-price-item">
@@ -153,12 +272,93 @@
                           </ul>
                         </div>
                         <p class="theme-item-page-summary-price-total">Total
-                          <span>$191.00</span>
+                          <span id="resultMobile">{{experience.price}}</span>
                         </p>
                       </div>
                       <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
                     </div>
                   </div>
+
+
+
+                  <div class="theme-item-page-details _pv-30 theme-item-page-details-first-nm">
+                    <div class="theme-item-page-details-section">
+                      <div class="row magnific-gallery row-col-gap" data-gutter="10">
+                       {% for image in gallerys %}
+ 
+                        <div class="col-xs-4 ">
+                          <div class="banner _h-20vh _h-mob-15vh banner-">
+                            <div class="banner-bg" style="background-image:url({% static "media" %}/{{ image }});"></div>
+                            <a class="banner-link" href="{% static "media/" %}/{{ image }}"></a>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <div class="theme-item-page-details-section">
+                      <h5 class="theme-item-page-details-section-title">Overview</h5>
+                      <div class="theme-item-page-desc">
+                         <p> {{ experience.overview|linebreaks }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="sticky-col _pv-30 _mob-h">
+                    <div class="theme-search-area theme-search-area-vert">
+                      <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
+                        <h1 class="theme-search-area-title">{{experience.price}} PKR per person</h1>
+                      </div>
+                      <div class="theme-search-area-form">
+                        <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+                          <div class="theme-search-area-section-inner">
+                            <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                            <input class="theme-search-area-section-input datePickerSingle _mob-h" value="Wed 06/27" type="text"/>
+                            <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                          </div>
+                        </div>
+                        <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
+                          <div class="theme-search-area-section-inner">
+                            <i class="theme-search-area-section-icon lin lin-people"></i>
+                            <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                            <div class="quantity-selector-box" id="ExpSearchGuests">
+                              <div class="quantity-selector-inner">
+                                <p class="quantity-selector-title">Guests</p>
+                                <ul class="quantity-selector-controls">
+                                <li class="quantity-selector-decrement" onclick="MultipyDesktop()">
+                                    <a href="#">&#45;</a>
+                                  </li>
+                                  <li class="quantity-selector-current" id="totalGuests">1</li>
+                                  <li class="quantity-selector-increment" onclick="MultipyDesktop()">
+                                    <a href="#">&#43;</a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="theme-item-page-summary-price _mb-20">
+                          <div class="collapse" id="summaryPriceCollapse">
+                            <ul class="theme-item-page-summary-price-list">
+                              <li class="theme-item-page-summary-price-item">
+                                <h5 class="theme-item-page-summary-price-item-title">2 Guests</h5>
+                                <p class="theme-item-page-summary-price-item-subtitle"></p>
+                                <p class="theme-item-page-summary-price-item-price">$184.00</p>
+                              </li>
+                              <li class="theme-item-page-summary-price-item">
+                                <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
+                                <p class="theme-item-page-summary-price-item-subtitle"></p>
+                                <p class="theme-item-page-summary-price-item-price">$7.00</p>
+                              </li>
+                            </ul>
+                          </div>
+                          <p class="theme-item-page-summary-price-total">Total
+                            <span id="resultDesktop">{{experience.price}}</span>
+                          </p>
+                        </div>
+                        <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -170,13 +370,72 @@
 
 
 
+{% endblock %}
+
+
+{% block script %}
+<script>
+    $('.open-popup-link').magnificPopup({
+  type: 'inline',
+  midClick: true,
+  mainClass: 'mfp-fade'
+});
+
+
+      function DropDown(el) {
+        this.dd = el;
+        this.initEvents();
+      }
+      DropDown.prototype = {
+        initEvents : function() {
+          var obj = this;
+
+          obj.dd.on('click', function(event){
+            $(this).toggleClass('active');
+            event.stopPropagation();
+          });
+        }
+      }
+
+      $(function() {
+
+        var dd = new DropDown( $('#dd') );
+
+        $(document).click(function() {
+          // all dropdowns
+          $('.wrapper-dropdown-5').removeClass('active');
+        });
+
+      });
+
+      $(function() {
+
+        var dd = new DropDown( $('#dd') );
+
+        $(document).click(function() {
+          // all dropdowns
+          $('.wrapper-dropdown-5').removeClass('active');
+        });
+
+      });
+
+      function MultipyDesktop(){
+        num1 = document.getElementById("totalGuests").innerHTML;
+        num2 = {{ experience.price}};
+        document.getElementById("resultDesktop").innerHTML = num1*num2;
+      }
+
+      function MultipyMobile(){
+        num1 = document.getElementById("totalGuest").innerHTML;
+        num2 = {{experience.price}};
+        document.getElementById("resultMobile").innerHTML = num1*num2;
+      }
+
+
+</script>
 
 
 
 
+{% endblock %}
 
-
-
-
-
-   {% endblock %}

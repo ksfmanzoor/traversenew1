@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ <div class="theme-hero-area theme-hero-area-half">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url({% static "media/covers/kund_malir.jpg" %});"></div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body">
+        <div class="container">
+          <div class="theme-page-header theme-page-header-lg theme-page-header-abs">
+            <h1 class="theme-page-header-title">Travel Inspirations</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+<div class="theme-page-section theme-page-section-xxl theme-page-section-white">
+      <div class="container">
+        <div class="theme-page-section-header theme-page-section-header-gray">
+          <h5 class="theme-page-section-title">Our Blogs</h5>
+          <p class="theme-page-section-subtitle">Read about epic Travese Stories of Pakistan</p>
+        </div>
+        <div class="row row-col-gap" data-gutter="20">
+        {% for post in posts %}
+          <div class= "col-md-4 col-md-4 col-md-4">
+            <div class="banner _h-40vh _br-3 _bsh-xl _bsh-light banner-animate banner-animate-mask-in">
+              <div class="banner-bg" style="background-image:url({% static "media" %}/{{ post.image }});"></div>
+              <div class="banner-mask"></div>
+              <a class="banner-link" href="{% url 'post-details' post.id %}"></a>
+              <div class="banner-caption _pt-100 banner-caption-bottom banner-caption-grad">
+                <h5 class="banner-title">{{ post.title }}</h5>
+
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+    
+{% endblock content %}
+
+
+   
+
+
+
+  

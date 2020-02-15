@@ -1,38 +1,117 @@
-{% extends 'experiences/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
 
-     <div class="theme-hero-area _h-desk-100vh">
+      <div class="theme-hero-area front">
       <div class="theme-hero-area-bg-wrap">
-        <div class="theme-hero-area-bg" style="background-image:url({% static "img/bve-xl2eqku_1500x800.jpg" %});" id="hero-banner"></div>
-        <div class="theme-hero-area-bg-pattern theme-hero-area-bg-pattern-strong" style="background-image:url({% static "img/patterns/ep_naturalblack.png" %});"></div>
-        <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
-        <div class="blur-area" data-bg-area="#hero-banner" data-blur-area="#hero-search-form" data-blur="20"></div>
+        <div class="theme-hero-area-bg theme-hero-area-bg-blur" style="background-image:url(img/gmtx7uc6lnc_1500x800.jpg);"></div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
       </div>
-      <div class="theme-hero-area-body _pos-desk-v-c _w-f _pv-mob-60">
+      <div class="theme-hero-area-body">
         <div class="container">
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <div class="theme-search-area _pt-desk-200 theme-search-area-stacked theme-search-area-white">
-                <div class="theme-search-area-header _ta-c">
-                  <h1 class="theme-search-area-title">Search for Experiences</h1>
-                  <p class="theme-search-area-subtitle">Search hundreds of travel sites at once</p>
+          <div class="row _pv-100 _pv-mob-50">
+            <div class="col-md-10">
+              <div class="theme-search-area _mob-h theme-search-area-white">
+                <div class="theme-search-area-header _mb-20">
+                  <h1 class="theme-search-area-title theme-search-area-title-sm">Scroll through Trips & Experiences</h1>
+                  <p class="theme-search-area-subtitle">Witness the intrinsic Nature and raw Culture of Bounteous Realm with Traverse Pakistan</p>
                 </div>
-                <div class="theme-search-area-form" id="hero-search-form">
-                  <div class="row" data-gutter="none">
-                    <div class="col-md-4 ">
-                      <div class="theme-search-area-section first theme-search-area-section-curved">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                          <input class="theme-search-area-section-input typeahead" type="text" placeholder="Destination" data-provide="typeahead"/>
+                  <div class="tab-pane active" id="SearchAreaTabs-1" role="tab-panel">
+                    <form class="theme-search-area theme-search-area-white form-group"  method="GET" action="{% url 'search' %}">
+                      <div class="theme-search-area-form">
+                        <div class="row" data-gutter="30">
+                          <div class="col-md-4 ">
+                            <div class="theme-search-area-section first theme-search-area-section-line">
+                              <div class="theme-search-area-section-inner">
+                                  <select id="dropdown" class="theme-search-area-section-input dropdown-toggle"  type="search" name="region" >
+                                        {% for i in regions %}
+                                        <option value="{{ i.slug }}">{{ i.title }}</option>
+                                        {% endfor %}
+                                    </select>
+
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-7 ">
+                            <div class="row" data-gutter="30">
+                              <div class="col-md-4 ">
+                                <div class="theme-search-area-section theme-search-area-section-line">
+                                  <div class="theme-search-area-section-inner">
+                                    <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                    <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                                    <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 ">
+                                <div class="theme-search-area-section theme-search-area-section-line">
+                                  <div class="theme-search-area-section-inner">
+                                    <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                    <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                                    <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 ">
+                                <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Guests">
+                                  <div class="theme-search-area-section-inner">
+                                    <i class="theme-search-area-section-icon lin lin-people"></i>
+                                    <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                                    <div class="quantity-selector-box" id="ExpSearchGuests">
+                                      <div class="quantity-selector-inner">
+                                        <p class="quantity-selector-title">Guests</p>
+                                        <ul class="quantity-selector-controls">
+                                          <li class="quantity-selector-decrement">
+                                            <a href="#">&#45;</a>
+                                          </li>
+                                          <li class="quantity-selector-current">1</li>
+                                          <li class="quantity-selector-increment">
+                                            <a href="#">&#43;</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-1 ">
+                            <button class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow" type="submit">&rarr;</button>
+                          </div>
                         </div>
                       </div>
+
+                    </form>
+                  </div>
+              </div>
+              <div class="theme-search-area-inline _desk-h theme-search-area-inline-white">
+                <h4 class="theme-search-area-inline-title">London Experiences</h4>
+                <p class="theme-search-area-inline-details">June 27 &rarr; July 02, 2 Guests</p>
+                <a class="theme-search-area-inline-link magnific-inline" href="#searchEditModal">
+                  <i class="fa fa-pencil"></i>Edit
+                </a>
+                <div class="magnific-popup magnific-popup-sm mfp-hide" id="searchEditModal">
+                  <div class="theme-search-area theme-search-area-vert">
+                    <div class="theme-search-area-header">
+                      <h1 class="theme-search-area-title theme-search-area-title-sm">Edit your Search</h1>
+                      <p class="theme-search-area-subtitle">Prices might be different from current results</p>
                     </div>
-                    <div class="col-md-7 ">
-                      <div class="row" data-gutter="none">
-                        <div class="col-md-4 ">
+                    <div class="theme-search-area-form">
+                      <div class="theme-search-area-section first theme-search-area-section-curved">
+                        <label class="theme-search-area-section-label">Where</label>
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                          <input class="theme-search-area-section-input typeahead" value="New York" type="text" placeholder="Destination" data-provide="typeahead"/>
+                        </div>
+                      </div>
+                      <div class="row" data-gutter="10">
+                        <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-curved">
+                            <label class="theme-search-area-section-label">From</label>
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-calendar"></i>
                               <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
@@ -40,8 +119,9 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-4 ">
+                        <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-curved">
+                            <label class="theme-search-area-section-label">To</label>
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-calendar"></i>
                               <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
@@ -49,12 +129,15 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-4 ">
+                      </div>
+                      <div class="row" data-gutter="10">
+                        <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-curved quantity-selector" data-increment="Guests">
+                            <label class="theme-search-area-section-label">Guests</label>
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-people"></i>
                               <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
-                              <div class="quantity-selector-box" id="ExpSearchGuests">
+                              <div class="quantity-selector-box" id="mobile-ExpSearchGuests">
                                 <div class="quantity-selector-inner">
                                   <p class="quantity-selector-title">Guests</p>
                                   <ul class="quantity-selector-controls">
@@ -72,12 +155,11 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-1 ">
-                      <button class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-curved theme-search-area-submit-primary">
-                        <i class="theme-search-area-submit-icon fa fa-angle-right"></i>
-                        <span class="_desk-h">Search</span>
-                      </button>
+                      <div class="row" data-gutter="10">
+                        <div class="col-md-6 ">
+                          <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Change</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -88,35 +170,27 @@
       </div>
     </div>
 
-
-
-
-
-   <div class="theme-page-section theme-page-section-white theme-page-section-header-gray">
+<div class="theme-page-section theme-page-section-xxl theme-page-section-white">
       <div class="container">
-        <div class="theme-page-section-header">
-          <h5 class="theme-page-section-title">Best Trip</h5>
-          <p class="theme-page-section-subtitle">Most popular Trips of Pakistan</p>
+        <div class="theme-page-section-header theme-page-section-header-gray">
+          <h5 class="theme-page-section-title">Popular Immersions</h5>
+          <p class="theme-page-section-subtitle">From adventure to leisure Traverse has it all</p>
         </div>
-        <div class="theme-inline-slider row" data-gutter="10">
-          <div class="owl-carousel" data-items="3" data-loop="true" data-nav="true">
+        <div class="row row-col-gap" data-gutter="20">
          {% for trip in trips %}
-
-            <div class="col-md-12 ">
-            <div class="banner _h-60vh banner-animate banner-animate-mask-in">
+          <div class= "col-md-4 col-md-4 col-md-4">
+            <div class="banner _h-40vh _br-3 _bsh-xl _bsh-light banner-animate banner-animate-mask-in">
               <div class="banner-bg" style="background-image:url({% static "media" %}/{{ trip.image }});"></div>
               <div class="banner-mask"></div>
               <a class="banner-link" href="{% url 'trip-details' trip.slug %}"></a>
-              <div class="banner-caption banner-caption-bottom banner-caption-grad">
+              <div class="banner-caption _pt-100 banner-caption-bottom banner-caption-grad">
                 <h5 class="banner-title">{{ trip.title }}</h5>
-                <p class="banner-subtitle _fw-n"></p>
               </div>
             </div>
           </div>
-          {% endfor %}
-           </div>
+        {% endfor %}
         </div>
       </div>
     </div>
-</div>
+
 {% endblock content %}
